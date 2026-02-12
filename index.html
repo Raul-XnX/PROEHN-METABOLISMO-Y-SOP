@@ -1,0 +1,2971 @@
+<!doctype html>
+<html lang="es-MX">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PRO Enhanced Nutrition - Herramientas</title>
+
+  <style>
+    /* =========================
+       PALETA C — PRO NEON
+       ========================= */
+    :root{
+      --bg: #E6F1F6;
+      --panel: #FFFFFF;
+      --panel2: #F0F4FA;
+      --stroke: #E2E8F0;
+
+      --text: #1E293B;
+      --muted: #64748B;
+
+      --pink: #FF3FD5;
+      --pink2:#FF6BE6;
+      --cyan: #22C7E5;
+      --shadow: 0 10px 28px rgba(0,0,0,0.08);
+
+      --r1: 26px;
+      --r2: 18px;
+
+      --orange: rgba(255, 140, 0, 1);
+    }
+
+    *{ box-sizing:border-box; }
+    html{ scroll-behavior:smooth; }
+
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+      color: var(--text);
+      background:
+        radial-gradient(900px 600px at 15% 10%, rgba(255,63,213,0.18), transparent 60%),
+        radial-gradient(900px 600px at 85% 20%, rgba(255,107,230,0.14), transparent 58%),
+        linear-gradient(135deg, rgba(255, 140, 200, 0.20), rgba(255, 180, 220, 0.08)),
+        var(--bg);
+      min-height:100vh;
+    }
+
+    a{ color:inherit; text-decoration:none; }
+
+    .wrap{
+      max-width:1100px;
+      margin:0 auto;
+      padding: 26px 18px 70px;
+    }
+
+    /* Header */
+    .topbar{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+      padding: 14px 16px;
+
+      border:1px solid var(--stroke);
+      background: rgba(255,255,255,0.75);
+
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+
+      border-radius: 999px;
+      box-shadow: var(--shadow);
+
+      position: sticky;
+      top: 14px;
+      z-index: 20;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      font-weight: 900;
+      letter-spacing: 0.2px;
+      white-space: nowrap;
+    }
+
+    .dot{
+      width:12px;
+      height:12px;
+      border-radius: 50%;
+      background: linear-gradient(90deg, var(--pink), var(--cyan));
+      box-shadow:
+        0 0 22px rgba(255,63,213,0.60),
+        0 0 28px rgba(34,199,229,0.25);
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding: 12px 14px;
+      border-radius: 999px;
+      font-weight: 900;
+      border: 1px solid rgba(255,255,255,0.16);
+      background: linear-gradient(90deg, rgba(255,63,213,0.18), rgba(34,199,229,0.16));
+      box-shadow: 0 16px 44px rgba(0,0,0,0.40);
+      cursor:pointer;
+      transition: transform .12s ease, filter .12s ease;
+    }
+    .btn:hover{ transform: translateY(-1px); filter: brightness(1.06); }
+    .btn:active{ transform: translateY(0px); filter: brightness(0.98); }
+
+    /* HERO */
+    .hero{
+      margin-top: 20px;
+      border: 1px solid var(--stroke);
+      background: linear-gradient(180deg, rgba(255,255,255,0.10), rgba(255,255,255,0.06));
+      border-radius: var(--r1);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      position: relative;
+    }
+    .hero:before{
+      content:"";
+      position:absolute;
+      inset:-120px -160px auto auto;
+      width: 360px;
+      height: 360px;
+      background: radial-gradient(circle at 30% 30%, rgba(34,199,229,0.22), transparent 60%);
+      filter: blur(8px);
+      transform: rotate(18deg);
+      pointer-events:none;
+    }
+    .hero:after{
+      content:"";
+      position:absolute;
+      inset:auto auto -160px -160px;
+      width: 420px;
+      height: 420px;
+      background: radial-gradient(circle at 30% 30%, rgba(255,63,213,0.22), transparent 60%);
+      filter: blur(10px);
+      pointer-events:none;
+    }
+
+    .heroInner{
+      position:relative;
+      padding: 26px;
+    }
+
+    .kicker{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      border:1px solid rgba(255,255,255,0.14);
+      background: rgba(0,0,0,0.20);
+      font-weight: 900;
+      letter-spacing: 0.45px;
+      font-size: 12.5px;
+      color: rgba(255,255,255,0.88);
+    }
+    .kicker .spark{
+      width:10px;
+      height:10px;
+      border-radius: 3px;
+      background: linear-gradient(120deg, var(--pink), var(--cyan));
+      box-shadow: 0 0 18px rgba(34,199,229,0.35);
+      transform: rotate(15deg);
+    }
+
+    h1{
+      margin: 14px 0 10px;
+      font-size: clamp(30px, 4.3vw, 50px);
+      line-height: 1.03;
+      letter-spacing: -0.8px;
+    }
+
+    .heroSubtitle{
+      margin: 4px 0 12px;
+      font-size: clamp(20px, 2.6vw, 30px);
+      font-weight: 700;
+      color: var(--muted);
+      line-height: 1.3;
+    }
+
+    .sub{
+      margin:0;
+      max-width: 70ch;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    .toolBox2{
+      margin-top:18px;
+      padding:18px 22px 18px 26px;
+      border-radius:18px;
+      background:var(--panel);
+      border:1px solid var(--stroke);
+      font-weight:700;
+      font-size:16px;
+      color:var(--text);
+      box-shadow: var(--shadow);
+      display:block;
+      max-width:700px;
+      margin-left:auto;
+      margin-right:auto;
+      position:relative;
+      transition: all 0.25s ease;
+      overflow:hidden;
+      text-align:center;
+    }
+
+    .toolSub{
+      display:block;
+      margin-top:6px;
+      color: var(--muted);
+      font-weight: 800;
+      font-size: 13px;
+      letter-spacing: .2px;
+    }
+
+    .infoBox{
+      margin-top:16px;
+      padding:22px 22px 22px 26px;
+      border-radius:18px;
+      background:var(--panel);
+      border:1px solid var(--stroke);
+      box-shadow:var(--shadow);
+      max-width:900px;
+      margin-left:0;
+      margin-right:auto;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .infoBox::before{
+      content:"";
+      position:absolute;
+      left:0;
+      top:0;
+      bottom:0;
+      width:8px;
+      background:linear-gradient(180deg, rgba(34,199,229,0.45), rgba(34,199,229,0.20));
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border-radius:18px 0 0 18px;
+    }
+
+    .infoTitle{
+      font-size:18px;
+      font-weight:800;
+      margin-bottom:10px;
+    }
+
+    .infoBox p{
+      font-size:15px;
+      color:var(--muted);
+      line-height:1.6;
+      margin:0 0 10px;
+    }
+
+    /* =========================
+       CENTER BOX
+       ========================= */
+    .centerBox{
+      margin-top:18px;
+      padding:18px 26px;
+      border-radius:22px;
+      background: rgba(255, 140, 0, 0.14);
+      border: 1px solid rgba(255, 140, 0, 0.30);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+
+      color: #1E293B;
+      font-size:18px;
+      font-weight:900;
+      text-align:center;
+      letter-spacing:0.6px;
+      text-transform:uppercase;
+      line-height:1.35;
+
+      box-shadow:
+        0 20px 55px rgba(0,0,0,0.18),
+        0 0 0 1px rgba(255,255,255,0.35) inset,
+        0 0 40px rgba(255,140,0,0.28);
+
+      max-width:780px;
+      margin-left:auto;
+      margin-right:auto;
+
+      position:relative;
+      overflow:hidden;
+    }
+
+    .centerBox::before{
+      content:"";
+      position:absolute;
+      left:-20%;
+      top:-60%;
+      width:60%;
+      height:220%;
+      transform: rotate(20deg);
+      animation: glassMove 6s linear infinite;
+      background: rgba(255,255,255,0.22);
+      filter: blur(2px);
+      pointer-events:none;
+    }
+
+    .centerBox::after{
+      content:"";
+      position:absolute;
+      left:0;
+      top:0;
+      bottom:0;
+      width:10px;
+      background: linear-gradient(180deg, rgba(255, 170, 60, 0.9), rgba(255, 120, 0, 0.5));
+      border-radius:22px 0 0 22px;
+      opacity:0.75;
+    }
+
+    @keyframes glassMove {
+      0%   { transform: translateX(-120%) rotate(20deg); }
+      100% { transform: translateX(220%) rotate(20deg); }
+    }
+
+    /* =========================
+       FENOTIPOS
+       ========================= */
+    .fenotipoGrid{
+      margin-top: 16px;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px;
+      max-width: 980px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .fenotipoCard{
+      position: relative;
+      overflow: hidden;
+      padding: 18px 18px 16px 18px;
+      border-radius: 22px;
+
+      border: 1px solid rgba(140, 90, 255, 0.22);
+      background: linear-gradient(135deg, rgba(140, 90, 255, 0.14), rgba(140, 90, 255, 0.06));
+
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+
+      box-shadow:
+        0 18px 50px rgba(0,0,0,0.12),
+        0 0 0 1px rgba(255,255,255,0.22) inset;
+
+      transition: transform .22s ease, box-shadow .22s ease;
+    }
+
+    .fenotipoCard::before{
+      content:"";
+      position:absolute;
+      left:-30%;
+      top:-80%;
+      width:60%;
+      height:260%;
+      transform: rotate(18deg);
+      background: rgba(255,255,255,0.18);
+      filter: blur(10px);
+      pointer-events:none;
+    }
+
+    .fenotipoCard h3{
+      margin: 0 0 10px 0;
+      font-size: 16px;
+      font-weight: 900;
+      letter-spacing: 0.2px;
+      color: var(--text);
+    }
+
+    .fenotipoCard h3 span{
+      display: block;
+      margin-top: 6px;
+      font-weight: 700;
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.35;
+    }
+
+    .fenotipoCard ul{
+      margin: 0;
+      padding-left: 18px;
+      color: var(--muted);
+      line-height: 1.55;
+      font-size: 14px;
+    }
+
+    .fenotipoCard li{ margin: 6px 0; }
+
+    .fenotipoCard:hover{
+      transform: translateY(-6px);
+      box-shadow:
+        0 28px 75px rgba(0,0,0,0.18),
+        0 0 0 1px rgba(255,255,255,0.28) inset,
+        0 0 34px rgba(255, 120, 0, 0.25);
+    }
+
+    .fenotipoCard.cardActiva{
+      animation: pulseCard 1.4s ease-in-out infinite;
+      outline: 2px solid rgba(255,120,0,0.65);
+      box-shadow:
+        0 34px 90px rgba(0,0,0,0.22),
+        0 0 0 1px rgba(255,255,255,0.30) inset,
+        0 0 55px rgba(255,120,0,0.35);
+    }
+
+    @keyframes pulseCard{
+      0%{ transform: translateY(-6px) scale(1.00); }
+      50%{ transform: translateY(-8px) scale(1.02); }
+      100%{ transform: translateY(-6px) scale(1.00); }
+    }
+
+    @media (max-width: 820px){
+      .fenotipoGrid{ grid-template-columns: 1fr; }
+    }
+
+    /* =========================
+       SELECTOR CRITERIOS SOP
+       ========================= */
+    .criteriaWrap{
+      margin-top: 18px;
+      max-width: 980px;
+      margin-left: auto;
+      margin-right: auto;
+      display: grid;
+      gap: 16px;
+    }
+
+    .criteriaBox{
+      background: var(--panel);
+      border: 1px solid var(--stroke);
+      border-radius: 22px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .criteriaRow{
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 14px;
+      align-items: center;
+      padding: 16px 18px;
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+    }
+    .criteriaRow:last-child{ border-bottom: 0; }
+
+    .critText{
+      font-size: 14.5px;
+      line-height: 1.5;
+      color: var(--text);
+    }
+
+    .toggleBtn{
+      min-width: 70px;
+      padding: 10px 14px;
+      border-radius: 14px;
+      border: 1px solid rgba(0,0,0,0.10);
+      font-weight: 900;
+      letter-spacing: .6px;
+      cursor: pointer;
+      transition: transform .15s ease, box-shadow .15s ease, background .15s ease, border-color .15s ease;
+      user-select: none;
+    }
+
+    .toggleBtn[data-val="no"]{
+      background: rgba(255,255,255,0.85);
+      color: #2d3a45;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    }
+
+    .toggleBtn[data-val="si"]{
+      background: rgba(255, 120, 0, 0.20);
+      border-color: rgba(255, 120, 0, 0.65);
+      color: #1c2b35;
+      box-shadow:
+        0 18px 45px rgba(0,0,0,0.18),
+        0 0 0 2px rgba(255,120,0,0.28),
+        0 0 35px rgba(255,120,0,0.35);
+    }
+
+    .toggleBtn:hover{ transform: translateY(-2px); }
+
+    .resultBox{
+      border-radius: 22px;
+      padding: 18px 18px;
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      transition: background .2s ease, border-color .2s ease, box-shadow .2s ease;
+    }
+
+    .resultBox.isResult{ animation: pulseResult 1.25s ease-in-out infinite; }
+
+    @keyframes pulseResult{
+      0%   { transform: translateY(0px) scale(1.00); }
+      50%  { transform: translateY(-2px) scale(1.01); }
+      100% { transform: translateY(0px) scale(1.00); }
+    }
+
+    .resTitle{
+      font-weight: 900;
+      letter-spacing: .6px;
+      text-transform: uppercase;
+      font-size: 12px;
+      color: rgba(30,40,50,0.85);
+      margin-bottom: 8px;
+    }
+
+    .resMain{
+      font-size: 18px;
+      font-weight: 900;
+      color: #1e2f3a;
+      line-height: 1.25;
+    }
+
+    .resFenotipo{
+      margin-top: 6px;
+      font-size: 15px;
+      font-weight: 800;
+      color: #1e2f3a;
+    }
+
+    .resMeta{
+      margin-top: 8px;
+      font-size: 13px;
+      color: rgba(30,40,50,0.75);
+    }
+
+    .resultBox.resA{
+      border: 1px solid rgba(255, 60, 80, 0.55);
+      background: rgba(255, 60, 80, 0.10);
+      box-shadow: 0 18px 45px rgba(0,0,0,0.14), 0 0 40px rgba(255, 60, 80, 0.25);
+    }
+    .resultBox.resB{
+      border: 1px solid rgba(255, 120, 0, 0.60);
+      background: rgba(255, 120, 0, 0.10);
+      box-shadow: 0 18px 45px rgba(0,0,0,0.14), 0 0 45px rgba(255, 120, 0, 0.25);
+    }
+    .resultBox.resC{
+      border: 1px solid rgba(255, 200, 0, 0.60);
+      background: rgba(255, 200, 0, 0.10);
+      box-shadow: 0 18px 45px rgba(0,0,0,0.14), 0 0 45px rgba(255, 200, 0, 0.22);
+    }
+    .resultBox.resD{
+      border: 1px solid rgba(0, 220, 140, 0.60);
+      background: rgba(0, 220, 140, 0.10);
+      box-shadow: 0 18px 45px rgba(0,0,0,0.14), 0 0 45px rgba(0, 220, 140, 0.22);
+    }
+    .resultBox.resNeutral{
+      border: 1px solid rgba(255,120,0,0.35);
+      background: rgba(255,120,0,0.10);
+      box-shadow: 0 18px 45px rgba(0,0,0,0.14), 0 0 40px rgba(255,120,0,0.18);
+    }
+
+    /* =========================
+       BOTÓN REINICIAR
+       ========================= */
+    .resetWrap{
+      margin-top: 18px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .resetBtn{
+      padding: 12px 26px;
+      border-radius: 16px;
+      font-weight: 900;
+      letter-spacing: .6px;
+
+      border: 1px solid rgba(255,63,213,0.55);
+      background: rgba(255,255,255,0.92);
+      color: #1E293B;
+
+      cursor: pointer;
+      user-select: none;
+
+      box-shadow:
+        0 14px 34px rgba(0,0,0,0.10),
+        0 0 0 1px rgba(255,255,255,0.35) inset,
+        0 0 22px rgba(255,63,213,0.22);
+
+      transition: transform .18s ease, box-shadow .18s ease, filter .18s ease;
+    }
+
+    .resetBtn:hover{
+      filter: brightness(1.03);
+      animation: pulseReset 1.15s ease-in-out infinite;
+      box-shadow:
+        0 18px 48px rgba(0,0,0,0.14),
+        0 0 0 1px rgba(255,255,255,0.40) inset,
+        0 0 36px rgba(255,63,213,0.38),
+        0 0 60px rgba(255,107,230,0.22);
+    }
+
+    .resetBtn:active{
+      transform: translateY(1px) scale(0.99);
+      filter: brightness(0.98);
+    }
+
+    .exportBtn{
+      padding: 12px 26px;
+      border-radius: 16px;
+      font-weight: 1000;
+      letter-spacing: .6px;
+
+      border: 1px solid rgba(34,199,229,0.55);
+      background: linear-gradient(90deg, rgba(34,199,229,0.20), rgba(255,63,213,0.18));
+      color: #0f172a;
+
+      cursor: pointer;
+      user-select: none;
+
+      box-shadow:
+        0 14px 34px rgba(0,0,0,0.10),
+        0 0 0 1px rgba(255,255,255,0.35) inset,
+        0 0 22px rgba(34,199,229,0.22);
+
+      transition: transform .18s ease, box-shadow .18s ease, filter .18s ease;
+    }
+
+    .exportBtn:hover{
+      filter: brightness(1.03);
+      animation: pulseReset 1.15s ease-in-out infinite;
+      box-shadow:
+        0 18px 48px rgba(0,0,0,0.14),
+        0 0 0 1px rgba(255,255,255,0.40) inset,
+        0 0 36px rgba(34,199,229,0.30),
+        0 0 60px rgba(255,63,213,0.18);
+    }
+
+    .exportBtn:active{
+      transform: translateY(1px) scale(0.99);
+      filter: brightness(0.98);
+    }
+
+    @keyframes pulseReset{
+      0%   { transform: translateY(0px) scale(1.00); }
+      50%  { transform: translateY(-2px) scale(1.02); }
+      100% { transform: translateY(0px) scale(1.00); }
+    }
+
+    /* =========================
+       RECUADRO 2-COLUMNAS (SI/NO amarillo)
+       ========================= */
+    .haBox{
+      margin-top: 1cm;
+      background: var(--panel);
+      border: 1px solid var(--stroke);
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      max-width: 980px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .haRow{
+      display:grid;
+      grid-template-columns: 1fr 210px;
+      gap: 12px;
+      align-items: center;
+      padding: 12px 14px;
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+      background: rgba(255,255,255,0.90);
+    }
+    .haRow:last-child{ border-bottom: 0; }
+
+    .haText{
+      font-size: 13.5px;
+      line-height: 1.45;
+      color: #1f2c36;
+    }
+
+    .haYN{
+      justify-self: end;
+      width: 200px;
+      padding: 10px 12px;
+      border-radius: 10px;
+      border: 1px solid rgba(0,0,0,0.10);
+      font-weight: 900;
+      letter-spacing: .7px;
+      cursor: pointer;
+      transition: transform .15s ease, box-shadow .15s ease, background .15s ease, border-color .15s ease;
+      user-select: none;
+      text-transform: uppercase;
+    }
+
+    .haYN[data-val="no"]{
+      background: rgba(255, 230, 0, 0.75);
+      color: #111827;
+      box-shadow: 0 10px 22px rgba(0,0,0,0.08);
+    }
+    .haYN[data-val="si"]{
+      background: rgba(255, 230, 0, 0.95);
+      border-color: rgba(255, 200, 0, 0.85);
+      color: #0b1220;
+      box-shadow:
+        0 16px 36px rgba(0,0,0,0.14),
+        0 0 26px rgba(255, 230, 0, 0.35);
+    }
+    .haYN:hover{ transform: translateY(-2px); }
+
+    /* =========================
+       CALCULADORA % GRASA + TABLA DERECHA
+       ========================= */
+    .bfSection{
+      margin-top: 3cm;
+      max-width: 980px;
+      margin-left:auto;
+      margin-right:auto;
+    }
+
+    .bfTitle{
+      text-align:center;
+      font-weight: 1000;
+      letter-spacing: .3px;
+      font-size: 22px;
+      margin: 0 0 14px;
+      color: #111827;
+    }
+
+    .bfLayout{
+      display:grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 18px;
+      align-items: start;
+    }
+
+    .bfCard{
+      background: rgba(255,255,255,0.85);
+      border: 1px solid var(--stroke);
+      border-radius: 22px;
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      padding: 16px;
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+    }
+
+    .bfHint{
+      margin: 2px 0 12px;
+      font-size: 12.5px;
+      color: var(--muted);
+      text-align:center;
+      line-height:1.35;
+    }
+
+    .bfGrid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .bfField{
+      display:flex;
+      flex-direction:column;
+      gap: 7px;
+    }
+
+    .bfLabel{
+      font-size: 12px;
+      font-weight: 900;
+      color: #334155;
+      letter-spacing: .4px;
+      text-transform: uppercase;
+    }
+
+    .bfInput, .bfSelect{
+      width: 100%;
+      padding: 12px 12px;
+      border-radius: 14px;
+      border: 1px solid rgba(0,0,0,0.10);
+      background: rgba(255,255,255,0.90);
+      outline: none;
+      font-weight: 800;
+      color: #0f172a;
+    }
+
+    .bfInput:focus, .bfSelect:focus{
+      border-color: rgba(255,63,213,0.45);
+      box-shadow: 0 0 0 3px rgba(255,63,213,0.10);
+    }
+
+    .bfActions{
+      margin-top: 12px;
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      align-items:center;
+    }
+
+    .bfBtn{
+      padding: 14px 16px;
+      border-radius: 16px;
+      font-weight: 1000;
+      cursor:pointer;
+      border: 1px solid rgba(255,255,255,0.18);
+      background: linear-gradient(90deg, rgba(255,63,213,0.20), rgba(34,199,229,0.18));
+      box-shadow: 0 16px 44px rgba(0,0,0,0.18);
+      transition: transform .12s ease, filter .12s ease;
+    }
+    .bfBtn:hover{ transform: translateY(-1px); filter: brightness(1.03); }
+    .bfBtn:active{ transform: translateY(0px); filter: brightness(0.98); }
+
+    .bfBtn.secondary{
+      background: rgba(255,255,255,0.85);
+      border: 1px solid rgba(0,0,0,0.10);
+      box-shadow: 0 12px 28px rgba(0,0,0,0.10);
+    }
+
+    .bfResult{
+      margin-top: 12px;
+      text-align:center;
+      padding: 12px 12px;
+      border-radius: 16px;
+      border: 1px solid rgba(255,63,213,0.18);
+      background: rgba(255,63,213,0.06);
+    }
+    .bfPct{
+      font-size: 20px;
+      font-weight: 1000;
+      color:#0f172a;
+      margin: 0;
+    }
+    .bfSubRes{
+      margin: 6px 0 0;
+      font-size: 12.5px;
+      color: var(--muted);
+      line-height:1.35;
+    }
+
+    .bfTableCard{
+      position: relative;
+      padding: 12px;
+    }
+
+    .bfTableTitle{
+      text-align:center;
+      font-weight: 1000;
+      font-size: 14px;
+      letter-spacing:.35px;
+      color:#111827;
+      margin: 4px 0 10px;
+      text-transform: uppercase;
+    }
+
+    .bfTableWrap{
+      position: relative;
+      border: 1px solid rgba(0,0,0,0.10);
+      border-radius: 16px;
+      overflow: hidden;
+      background: rgba(255,255,255,0.92);
+    }
+
+    .bfTable{
+      width:100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+
+    .bfTable th, .bfTable td{
+      padding: 10px 10px;
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+      text-align: left;
+      color:#0f172a;
+      font-weight: 800;
+      vertical-align: middle;
+    }
+
+    .bfTable th{
+      background: rgba(15, 23, 42, 0.04);
+      font-size: 12px;
+      letter-spacing: .35px;
+      text-transform: uppercase;
+      color:#334155;
+    }
+
+    .bfTable tr:last-child td{ border-bottom: 0; }
+
+    .bfRowLabel{
+      font-weight: 1000;
+      color:#111827;
+    }
+
+    .bfSectionDivider{
+      background: rgba(15, 23, 42, 0.06);
+      color: #334155;
+      font-weight: 1000;
+      text-transform: uppercase;
+      letter-spacing: .35px;
+      font-size: 12px;
+    }
+
+    .bfRowActive{
+      background: rgba(255,63,213,0.06);
+      outline: 2px solid rgba(255,63,213,0.28);
+      outline-offset: -2px;
+    }
+
+    .bfCellActive{
+      background: rgba(255,63,213,0.14) !important;
+      box-shadow:
+        0 0 0 2px rgba(255,63,213,0.22) inset,
+        0 0 18px rgba(255,63,213,0.18);
+      border-radius: 12px;
+      font-weight: 1000;
+    }
+
+    .bfArrow{
+      position:absolute;
+      left: -12px;
+      width: 0;
+      height: 0;
+      border-top: 9px solid transparent;
+      border-bottom: 9px solid transparent;
+      border-right: 14px solid rgba(255,63,213,0.95);
+      filter: drop-shadow(0 6px 12px rgba(0,0,0,0.20));
+      opacity: 0;
+      transition: top .18s ease, opacity .18s ease;
+      pointer-events:none;
+    }
+
+    .bfArrowLabel{
+      position:absolute;
+      left: -128px;
+      width: 112px;
+      padding: 6px 8px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.92);
+      border: 1px solid rgba(255,63,213,0.35);
+      font-weight: 1000;
+      font-size: 12px;
+      color:#111827;
+      text-align:center;
+      box-shadow: 0 10px 24px rgba(0,0,0,0.12);
+      opacity: 0;
+      transition: top .18s ease, opacity .18s ease;
+      pointer-events:none;
+    }
+
+    .bfNote{
+      margin-top: 10px;
+      text-align:center;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    /* =========================
+       EVALUADOR SALUD METABÓLICA (MetS)
+       ========================= */
+    .msSection{
+      margin-top: 3cm;
+      max-width: 980px;
+      margin-left:auto;
+      margin-right:auto;
+    }
+
+    .msHeader{
+      border-radius: 18px;
+      padding: 14px 18px;
+      text-align: center;
+      font-weight: 1000;
+      letter-spacing: .6px;
+      text-transform: uppercase;
+      color: #111827;
+      border: 1px solid rgba(255, 140, 0, 0.38);
+      background: rgba(255, 140, 0, 0.14);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      box-shadow:
+        0 18px 55px rgba(0,0,0,0.14),
+        0 0 0 1px rgba(255,255,255,0.35) inset,
+        0 0 45px rgba(255,140,0,0.28);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .msHeader::before{
+      content:"";
+      position:absolute;
+      inset:-40% -30% auto auto;
+      width: 220px;
+      height: 220px;
+      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.35), transparent 60%);
+      filter: blur(10px);
+      transform: rotate(18deg);
+      pointer-events:none;
+    }
+
+    .msCard{
+      margin-top: 14px;
+      background: rgba(255,255,255,0.92);
+      border: 1px solid rgba(0,0,0,0.10);
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .msTable{
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+
+    .msTable td{
+      padding: 12px 12px;
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+      vertical-align: middle;
+      font-weight: 900;
+      color:#0f172a;
+    }
+    .msTable tr:last-child td{ border-bottom: 0; }
+
+    .msLeftGreen{
+      background: rgba(120, 220, 120, 0.35);
+      border-right: 1px solid rgba(0,0,0,0.06);
+    }
+    .msRightYellow{
+      background: rgba(255, 230, 0, 0.55);
+      width: 210px;
+      text-align: center;
+    }
+
+    .msYN{
+      width: 180px;
+      padding: 10px 12px;
+      border-radius: 12px;
+      border: 1px solid rgba(0,0,0,0.10);
+      font-weight: 1000;
+      letter-spacing: .7px;
+      cursor: pointer;
+      user-select: none;
+      text-transform: uppercase;
+      transition: transform .15s ease, box-shadow .15s ease, background .15s ease, border-color .15s ease;
+    }
+    .msYN[data-val="no"]{
+      background: rgba(255, 230, 0, 0.75);
+      color:#111827;
+      box-shadow: 0 10px 22px rgba(0,0,0,0.08);
+    }
+    .msYN[data-val="si"]{
+      background: rgba(255, 230, 0, 0.95);
+      border-color: rgba(255, 200, 0, 0.85);
+      color:#0b1220;
+      box-shadow:
+        0 16px 36px rgba(0,0,0,0.14),
+        0 0 26px rgba(255, 230, 0, 0.35);
+    }
+    .msYN:hover{ transform: translateY(-2px); }
+
+    .msInterpretRow td{
+      background: rgba(255, 230, 0, 0.25) !important;
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      font-weight: 1000;
+    }
+
+    .msInterpretText{
+      font-weight: 1000;
+      color:#111827;
+    }
+
+    /* =========================
+       ICC
+       ========================= */
+    .iccSection{
+      margin-top: 3cm;
+      max-width: 980px;
+      margin-left:auto;
+      margin-right:auto;
+    }
+
+    .iccLayout{
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 18px;
+      align-items: center;
+      transform: translate(-22px, -38px);
+    }
+
+    .iccCard{
+      border-radius: 14px;
+      overflow: hidden;
+      background: rgba(255,255,255,0.92);
+      border: 1px solid rgba(0,0,0,0.10);
+      box-shadow: var(--shadow);
+    }
+
+    .iccTitle{
+      background: rgba(255, 215, 90, 0.85);
+      padding: 10px 12px;
+      text-align: center;
+      font-weight: 1000;
+      letter-spacing: .5px;
+      text-transform: uppercase;
+      color:#111827;
+    }
+
+    .iccValueWrap{
+      padding: 10px 12px;
+      background: rgba(255,255,255,0.95);
+      text-align: center;
+      font-weight: 1000;
+      color:#0f172a;
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+    }
+
+    .iccValue{
+      display: inline-block;
+      padding: 8px 14px;
+      border-radius: 14px;
+      background: rgba(15, 23, 42, 0.04);
+      border: 1px solid rgba(0,0,0,0.08);
+      min-width: 90px;
+    }
+
+    .iccValue.isHigh{
+      background: rgba(255, 60, 80, 0.10);
+      border-color: rgba(255, 60, 80, 0.45);
+      box-shadow:
+        0 18px 55px rgba(0,0,0,0.18),
+        0 0 40px rgba(255, 60, 80, 0.22);
+      animation: iccPulse 1.2s ease-in-out infinite;
+    }
+
+    @keyframes iccPulse{
+      0%{ transform: translateY(0px) scale(1.00); }
+      50%{ transform: translateY(-2px) scale(1.02); }
+      100%{ transform: translateY(0px) scale(1.00); }
+    }
+
+    .iccRowPink{
+      background: rgba(255, 160, 190, 0.45);
+      padding: 10px 12px;
+      font-weight: 1000;
+      color:#111827;
+      text-align: center;
+    }
+
+    .iccRowBlue{
+      background: rgba(140, 190, 255, 0.45);
+      padding: 10px 12px;
+      font-weight: 1000;
+      color:#111827;
+      text-align: center;
+    }
+
+    .iccImageCard{
+      border-radius: 18px;
+      overflow: hidden;
+      background: rgba(255,255,255,0.85);
+      border: 1px solid rgba(0,0,0,0.10);
+      box-shadow: var(--shadow);
+      padding: 10px;
+    }
+    .iccImageCard img{
+      width: 100%;
+      height: auto;
+      display:block;
+      border-radius: 14px;
+    }
+
+    /* =========================
+       NOTAS (ACORDEÓN)
+       ========================= */
+    .notesSection{
+      margin-top: 1cm;
+      max-width: 980px;
+      margin-left:auto;
+      margin-right:auto;
+    }
+
+    .notesCard{
+      border-radius: 22px;
+      border: 1px solid rgba(0,0,0,0.10);
+      background: rgba(255,255,255,0.80);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      box-shadow:
+        0 18px 55px rgba(0,0,0,0.14),
+        0 0 0 1px rgba(255,255,255,0.35) inset;
+      overflow: hidden;
+    }
+
+    .accItem{ border-bottom: 1px solid rgba(0,0,0,0.06); }
+    .accItem:last-child{ border-bottom: 0; }
+
+    details.acc{ padding: 0; }
+
+    summary.accSum{
+      list-style: none;
+      cursor: pointer;
+      user-select: none;
+      padding: 14px 16px;
+      display:flex;
+      align-items:center;
+      justify-content: space-between;
+      gap: 14px;
+
+      background: linear-gradient(90deg, rgba(255,63,213,0.10), rgba(34,199,229,0.10));
+      font-weight: 1000;
+      letter-spacing: .35px;
+      text-transform: uppercase;
+      color:#0f172a;
+    }
+
+    summary.accSum::-webkit-details-marker{ display:none; }
+
+    .accLeft{
+      display:flex;
+      align-items:center;
+      gap: 10px;
+      min-width: 0;
+    }
+
+    .accPill{
+      width: 10px;
+      height: 10px;
+      border-radius: 3px;
+      background: linear-gradient(120deg, var(--pink), var(--cyan));
+      box-shadow: 0 0 18px rgba(34,199,229,0.25);
+      flex: 0 0 auto;
+    }
+
+    .accTitle{
+      font-size: 13px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .accChevron{
+      width: 26px;
+      height: 26px;
+      border-radius: 10px;
+      display:grid;
+      place-items:center;
+      border: 1px solid rgba(0,0,0,0.08);
+      background: rgba(255,255,255,0.65);
+      transition: transform .22s ease, filter .22s ease;
+      flex: 0 0 auto;
+    }
+
+    details[open] .accChevron{
+      transform: rotate(180deg);
+      filter: brightness(1.05);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.10);
+    }
+
+    .accBody{
+      padding: 16px 16px 18px;
+      color: var(--text);
+      animation: accFade .22s ease;
+    }
+
+    @keyframes accFade{
+      from{ opacity: 0; transform: translateY(-2px); }
+      to{ opacity: 1; transform: translateY(0px); }
+    }
+
+    .notesMeta{
+      font-weight: 1000;
+      color:#0f172a;
+      margin: 0 0 10px;
+      letter-spacing: .2px;
+    }
+
+    .notesText{
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 14px;
+    }
+
+    .notesText strong{ color:#0f172a; }
+
+    .notesList{
+      margin: 10px 0 0;
+      padding-left: 18px;
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 14px;
+    }
+    .notesList li{ margin: 6px 0; }
+
+    .notesSubHead{
+      margin: 14px 0 6px;
+      font-weight: 1000;
+      color:#0f172a;
+      letter-spacing: .2px;
+    }
+
+    .notesDivider{
+      margin: 14px 0;
+      height: 1px;
+      background: rgba(0,0,0,0.06);
+      border: 0;
+    }
+
+    /* =========================
+       PAUTAS ADICIONALES
+       ========================= */
+    .pautasSection{
+      margin-top: 18px;
+      max-width: 980px;
+      margin-left:auto;
+      margin-right:auto;
+    }
+
+    .pautasCard{
+      border-radius: 22px;
+      border: 1px solid rgba(255, 140, 0, 0.34);
+      background: rgba(255,255,255,0.82);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      box-shadow:
+        0 18px 55px rgba(0,0,0,0.14),
+        0 0 0 1px rgba(255,255,255,0.35) inset,
+        0 0 44px rgba(255,140,0,0.18);
+      overflow: hidden;
+    }
+
+    .pautasHeader{
+      padding: 14px 16px;
+      font-weight: 1000;
+      letter-spacing: .35px;
+      text-transform: uppercase;
+      color:#0f172a;
+      background: rgba(255, 140, 0, 0.14);
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
+
+    .pautasHeader:before{
+      content:"";
+      width: 10px;
+      height: 10px;
+      border-radius: 3px;
+      background: linear-gradient(120deg, var(--pink), var(--cyan));
+      box-shadow: 0 0 18px rgba(255,140,0,0.22);
+      flex: 0 0 auto;
+    }
+
+    .pautasBody{
+      padding: 16px 16px 18px;
+    }
+
+    .pautasText{
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 14px;
+    }
+
+    .pautasList{
+      margin: 12px 0 0;
+      padding-left: 18px;
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 14px;
+    }
+    .pautasList li{ margin: 6px 0; }
+
+    /* =========================
+       ABORDAJE IDEAL (NUEVO)
+       ========================= */
+    .abSection{
+      margin-top: 18px;
+      max-width: 980px;
+      margin-left:auto;
+      margin-right:auto;
+      display: grid;
+      gap: 16px;
+    }
+
+    .abTopGrid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .abCard{
+      border-radius: 22px;
+      border: 1px solid rgba(34,199,229,0.28);
+      background: rgba(255,255,255,0.82);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      box-shadow:
+        0 18px 55px rgba(0,0,0,0.12),
+        0 0 0 1px rgba(255,255,255,0.35) inset;
+      overflow: hidden;
+    }
+
+    .abHeader{
+      padding: 14px 16px;
+      font-weight: 1000;
+      letter-spacing: .35px;
+      text-transform: uppercase;
+      color:#0f172a;
+      background: rgba(34,199,229,0.10);
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+      display:flex;
+      align-items:center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .abHeader .tag{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,63,213,0.28);
+      background: rgba(255,63,213,0.10);
+      font-weight: 1000;
+      font-size: 12px;
+      color:#0f172a;
+      white-space: nowrap;
+    }
+
+    .abHeader .tagDot{
+      width:8px; height:8px; border-radius: 3px;
+      background: linear-gradient(120deg, var(--pink), var(--cyan));
+      box-shadow: 0 0 16px rgba(34,199,229,0.22);
+    }
+
+    .abBody{
+      padding: 16px 16px 18px;
+    }
+
+    .abText{
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.65;
+      font-size: 14px;
+    }
+
+    .abList{
+      margin: 12px 0 0;
+      padding-left: 18px;
+      color: var(--muted);
+      line-height: 1.65;
+      font-size: 14px;
+    }
+    .abList li{ margin: 6px 0; }
+
+    .abGrid4{
+      display:grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .abMiniHeader{
+      padding: 12px 14px;
+      font-weight: 1000;
+      letter-spacing: .25px;
+      text-transform: uppercase;
+      color:#0f172a;
+      background: linear-gradient(90deg, rgba(255,63,213,0.10), rgba(34,199,229,0.10));
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
+
+    .abMiniHeader:before{
+      content:"";
+      width: 10px;
+      height: 10px;
+      border-radius: 3px;
+      background: linear-gradient(120deg, var(--pink), var(--cyan));
+      box-shadow: 0 0 18px rgba(34,199,229,0.20);
+      flex: 0 0 auto;
+    }
+
+    .abCard.isActive{
+      outline: 2px solid rgba(255,120,0,0.55);
+      box-shadow:
+        0 26px 70px rgba(0,0,0,0.18),
+        0 0 0 1px rgba(255,255,255,0.35) inset,
+        0 0 44px rgba(255,120,0,0.22);
+    }
+
+    .abNote{
+      border-radius: 18px;
+      border: 1px solid rgba(255, 140, 0, 0.32);
+      background: rgba(255,140,0,0.10);
+      padding: 14px 16px;
+      color:#0f172a;
+      font-weight: 900;
+      letter-spacing: .2px;
+      line-height: 1.45;
+      box-shadow: var(--shadow);
+    }
+
+    @media (max-width: 820px){
+      .abTopGrid{ grid-template-columns: 1fr; }
+      .abGrid4{ grid-template-columns: 1fr; }
+    }
+
+    /* =========================
+       BOTONES FLOTANTES (WA + IG)
+       ========================= */
+    .floatBtns{
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      z-index: 999;
+    }
+
+    .floatBtn{
+      width: 54px;
+      height: 54px;
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      border: 1px solid rgba(255,255,255,0.22);
+      background: rgba(255,255,255,0.72);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      box-shadow:
+        0 18px 55px rgba(0,0,0,0.18),
+        0 0 0 1px rgba(255,255,255,0.35) inset;
+      transition: transform .14s ease, filter .14s ease;
+      user-select: none;
+    }
+    .floatBtn:hover{ transform: translateY(-2px); filter: brightness(1.05); }
+    .floatBtn:active{ transform: translateY(0px) scale(0.98); }
+
+    .floatBtn.wa{
+      outline: 2px solid rgba(34, 199, 229, 0.22);
+      box-shadow:
+        0 18px 55px rgba(0,0,0,0.18),
+        0 0 32px rgba(34,199,229,0.22),
+        0 0 0 1px rgba(255,255,255,0.35) inset;
+    }
+    .floatBtn.ig{
+      outline: 2px solid rgba(255, 63, 213, 0.22);
+      box-shadow:
+        0 18px 55px rgba(0,0,0,0.18),
+        0 0 34px rgba(255,63,213,0.20),
+        0 0 0 1px rgba(255,255,255,0.35) inset;
+    }
+
+    .floatBtn svg{
+      width: 26px;
+      height: 26px;
+      opacity: 0.95;
+    }
+
+    @media (max-width: 920px){
+      .bfLayout{ grid-template-columns: 1fr; }
+      .bfArrowLabel{ left: -118px; }
+      .iccLayout{ grid-template-columns: 1fr; transform: none; }
+    }
+
+    @media (max-width: 720px){
+      .criteriaRow{ grid-template-columns: 1fr; }
+      .toggleBtn{ width: 100%; }
+      .resetBtn{ width: 100%; }
+
+      .haRow{ grid-template-columns: 1fr; }
+      .haYN{ width: 100%; justify-self: stretch; }
+
+      .bfGrid{ grid-template-columns: 1fr; }
+      .bfActions{ grid-template-columns: 1fr; }
+      .bfArrowLabel{ display:none; }
+
+      .msRightYellow{ width: auto; }
+      .msYN{ width: 100%; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+
+    <header class="topbar">
+      <div class="brand">
+        <span class="dot" aria-hidden="true"></span>
+        <span>PRO Enhanced Nutrition</span>
+      </div>
+
+      <button class="btn" id="btnCtaTop" type="button">Contactar</button>
+    </header>
+
+    <main class="hero" id="inicio">
+      <div class="heroInner">
+        <div class="kicker"><span class="spark" aria-hidden="true"></span> Estructura • Métricas • Resultados</div>
+
+        <h1>Identificador de Fenotipo</h1>
+
+        <h2 class="heroSubtitle">de Síndrome de Ovario Poliquístico y Salud Metabólica</h2>
+
+        <p class="sub">
+          Herramienta diseñada para identificar el fenotipo de SOP, evaluar salud metabólica
+          y orientar decisiones clínicas y nutricionales de forma estructurada.
+        </p>
+
+        <!-- ✅ CTA principal eliminado (botón “Quiero mi evaluación”) -->
+
+        <div class="toolBox2" role="note" aria-label="Herramienta">
+          <strong>Herramienta Identificador de Fenotipo de SOP</strong>
+          <span class="toolSub">Evaluación clínica y metabólica estructurada</span>
+        </div>
+
+        <div class="infoBox">
+          <div class="infoTitle">¿Qué es el Síndrome de Ovario Poliquístico?</div>
+          <p>El Síndrome de Ovario Poliquístico (SOP) es un trastorno endocrino–metabólico crónico y complejo que afecta principalmente a mujeres en edad reproductiva.</p>
+          <p>En México, su prevalencia varía: estimaciones conservadoras lo sitúan en 6 %, pero estudios recientes elevan la cifra a 21–22 %.</p>
+          <p>De acuerdo con los criterios de Rotterdam (2003), se requieren 2 de 3 criterios para el diagnóstico de SOP y asignación de fenotipo.</p>
+          <p>A nivel global, afecta entre 6 % y 13 %.</p>
+        </div>
+
+        <div class="centerBox">
+          FENOTIPOS, UNA FORMA DE CLASIFICAR A LAS PACIENTES
+        </div>
+
+        <div class="fenotipoGrid" id="fenotipos">
+          <div class="fenotipoCard" data-feno="A">
+            <h3>Fenotipo A <span>(Alteraciones menstruales y/o amenorrea + Hiperandrogenismo + Ovarios poliquísticos)</span></h3>
+            <ul>
+              <li>Es el más severo: cumple los 3 criterios.</li>
+              <li>Mayor riesgo de resistencia a la insulina, síndrome metabólico y obesidad central.</li>
+              <li>Elevada prevalencia de dislipidemias (↑ triglicéridos, ↓ HDL).</li>
+              <li>Mayor riesgo de infertilidad y ciclos anovulatorios persistentes.</li>
+              <li>Alta carga de síntomas visibles: acné, hirsutismo, alopecia androgénica.</li>
+              <li>Mayor inflamación sistémica y riesgo cardiovascular.</li>
+            </ul>
+          </div>
+
+          <div class="fenotipoCard" data-feno="B">
+            <h3>Fenotipo B <span>(Alteraciones menstruales y/o amenorrea + Hiperandrogenismo)</span></h3>
+            <ul>
+              <li>Similar al fenotipo A pero sin morfología poliquística en ultrasonido.</li>
+              <li>Elevado riesgo metabólico y resistencia a la insulina.</li>
+              <li>Síntomas severos de hiperandrogenismo.</li>
+              <li>Riesgo aumentado de infertilidad.</li>
+              <li>Perfil lipídico con mayor probabilidad de alteración.</li>
+            </ul>
+          </div>
+
+          <div class="fenotipoCard" data-feno="C">
+            <h3>Fenotipo C <span>(Hiperandrogenismo + Ovarios poliquísticos)</span></h3>
+            <ul>
+              <li>Fenotipo ovulatorio (ciclos regulares).</li>
+              <li>Riesgo metabólico intermedio.</li>
+              <li>Síntomas de hiperandrogenismo presentes.</li>
+              <li>Riesgo moderado de alteraciones glucémicas.</li>
+              <li>Mejor pronóstico reproductivo que A y B.</li>
+            </ul>
+          </div>
+
+          <div class="fenotipoCard" data-feno="D">
+            <h3>Fenotipo D <span>(Alteraciones menstruales y/o amenorrea + Ovarios poliquísticos)</span></h3>
+            <ul>
+              <li>Fenotipo más leve, sin hiperandrogenismo.</li>
+              <li>Menor riesgo metabólico.</li>
+              <li>Puede presentar infertilidad por alteraciones menstruales.</li>
+              <li>Baja carga de síntomas visibles.</li>
+              <li>Buena respuesta a intervención dietética y ejercicio.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="criteriaWrap">
+          <div class="criteriaBox" aria-label="Criterios SOP Rotterdam 2003">
+            <div class="criteriaRow">
+              <div class="critText">Alteraciones menstruales y/o amenorrea</div>
+              <button class="toggleBtn" type="button" data-key="mens" data-val="no">NO</button>
+            </div>
+
+            <div class="criteriaRow">
+              <div class="critText">
+                Morfología de ovario poliquístico (MOP): ≥20 folículos antrales de 2–9 mm en al menos un ovario
+                (o ≥12 folículos según criterio clásico) y/o volumen ovárico ≥10 mL en al menos un ovario.
+              </div>
+              <button class="toggleBtn" type="button" data-key="mop" data-val="no">NO</button>
+            </div>
+
+            <div class="criteriaRow">
+              <div class="critText">Hiperandrogenismo (clínico o bioquímico)</div>
+              <button class="toggleBtn" type="button" data-key="ha" data-val="no">NO</button>
+            </div>
+          </div>
+
+          <div class="resultBox resNeutral" id="fenotipoResultado" aria-live="polite">
+            <div class="resTitle">Resultado</div>
+            <div class="resMain" id="resMain">Selecciona al menos 2 criterios para SOP (Rotterdam 2003).</div>
+            <div class="resFenotipo" id="resFenotipo">—</div>
+            <div class="resMeta" id="resMeta">Criterios positivos: 0/3</div>
+          </div>
+
+          <div class="resetWrap" style="gap:12px; flex-wrap:wrap;">
+            <button class="resetBtn" id="btnReset" type="button">Reiniciar evaluación</button>
+            <button class="exportBtn" id="btnExportWord" type="button">Exportar resultados a Word</button>
+          </div>
+
+          <div class="haBox" id="haExtraBox">
+            <div class="haRow">
+              <div class="haText">
+                <strong>Hiperandrogenismo bioquímico:</strong> Posibles valores elevados de andrógenos como testosterona,
+                androstenediona, dehidroepiandrosterona (DHEA) y dehidroepiandrosterona sulfato (DHEA-S).
+              </div>
+              <button class="haYN" type="button" id="haBioBtn" data-val="no">NO</button>
+            </div>
+
+            <div class="haRow">
+              <div class="haText">
+                <strong>Hiperandrogenismo clínico:</strong> Síndrome SAHA (Seborrea, Alopecia de patrón androgénico, Hirsutismo),
+                acné.
+              </div>
+              <button class="haYN" type="button" id="haClinBtn" data-val="no">NO</button>
+            </div>
+          </div>
+
+          <!-- =========================
+               % GRASA / MetS / ICC / NOTAS
+               (sin cambios)
+               ========================= -->
+          <section class="bfSection" id="bfSection">
+            <h3 class="bfTitle">Calculadora de porcentaje de grasa aproximado</h3>
+
+            <div class="bfLayout">
+              <div class="bfCard">
+                <div class="bfHint">
+                  Basado en fórmula US Navy (aproximación). Ingresa medidas en <strong>cm</strong> (se convierten a pulgadas internamente).
+                  <br>El <strong>peso (kg)</strong> se usa para estimar <strong>kg de grasa</strong> y <strong>masa magra</strong>.
+                </div>
+
+                <div class="bfGrid">
+                  <div class="bfField">
+                    <div class="bfLabel">Sexo</div>
+                    <select class="bfSelect" id="bfSex">
+                      <option value="female">Mujer</option>
+                      <option value="male">Hombre</option>
+                    </select>
+                  </div>
+
+                  <div class="bfField">
+                    <div class="bfLabel">Altura (cm)</div>
+                    <input class="bfInput" id="bfHeight" type="number" inputmode="decimal" placeholder="Ej. 170" />
+                  </div>
+
+                  <div class="bfField">
+                    <div class="bfLabel">Peso (kg)</div>
+                    <input class="bfInput" id="bfWeight" type="number" inputmode="decimal" placeholder="Ej. 75" />
+                  </div>
+
+                  <div class="bfField">
+                    <div class="bfLabel">Cuello (cm)</div>
+                    <input class="bfInput" id="bfNeck" type="number" inputmode="decimal" placeholder="Ej. 35" />
+                  </div>
+
+                  <div class="bfField">
+                    <div class="bfLabel">Cintura / Abdomen (cm)</div>
+                    <input class="bfInput" id="bfWaist" type="number" inputmode="decimal" placeholder="Ej. 80" />
+                  </div>
+
+                  <div class="bfField" id="bfHipWrap">
+                    <div class="bfLabel">Cadera (cm) (para mujer en %grasa • necesaria para ICC)</div>
+                    <input class="bfInput" id="bfHip" type="number" inputmode="decimal" placeholder="Ej. 100" />
+                  </div>
+                </div>
+
+                <div class="bfActions">
+                  <button class="bfBtn" id="bfCalc" type="button">Calcular % grasa</button>
+                  <button class="bfBtn secondary" id="bfClear" type="button">Limpiar</button>
+                </div>
+
+                <div class="bfResult" id="bfResultBox">
+                  <p class="bfPct" id="bfPct">—</p>
+                  <p class="bfSubRes" id="bfDetail">Completa los campos y presiona <strong>Calcular</strong>.</p>
+                </div>
+
+                <div class="bfNote">
+                  Para hombre se usa abdomen/cintura; para mujer se usa cintura + cadera. (ICC usa cintura/cadera).
+                </div>
+              </div>
+
+              <div class="bfCard bfTableCard">
+                <div class="bfTableTitle">Clasificación según porcentaje</div>
+
+                <div class="bfTableWrap" id="bfTableWrap">
+                  <div class="bfArrow" id="bfArrow"></div>
+                  <div class="bfArrowLabel" id="bfArrowLabel"></div>
+
+                  <table class="bfTable" id="bfTable">
+                    <thead>
+                      <tr>
+                        <th>Clasificación</th>
+                        <th>Hombres</th>
+                        <th>Mujeres</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr id="row-delgado">
+                        <td class="bfRowLabel">Delgado</td>
+                        <td>&lt; 8%</td>
+                        <td>&lt; 15%</td>
+                      </tr>
+                      <tr id="row-optimo">
+                        <td class="bfRowLabel">Óptimo</td>
+                        <td>8–15%</td>
+                        <td>15–20%</td>
+                      </tr>
+                      <tr id="row-sobrepeso">
+                        <td class="bfRowLabel">Sobrepeso</td>
+                        <td>15–20%</td>
+                        <td>20–25%</td>
+                      </tr>
+                      <tr id="row-preobeso">
+                        <td class="bfRowLabel">Pre-obeso</td>
+                        <td>20–25%</td>
+                        <td>25–32%</td>
+                      </tr>
+                      <tr id="row-obeso">
+                        <td class="bfRowLabel">Obeso</td>
+                        <td>&ge; 25%</td>
+                        <td>&ge; 32%</td>
+                      </tr>
+
+                      <tr class="bfSectionDivider">
+                        <td colspan="3">Atletas</td>
+                      </tr>
+
+                      <tr id="row-atleta-corre">
+                        <td class="bfRowLabel">Corredores larga distancia</td>
+                        <td>4–9%</td>
+                        <td>6–15%</td>
+                      </tr>
+                      <tr id="row-atleta-lucha">
+                        <td class="bfRowLabel">Luchadores</td>
+                        <td>4–10%</td>
+                        <td>—</td>
+                      </tr>
+                      <tr id="row-atleta-gim">
+                        <td class="bfRowLabel">Gimnastas</td>
+                        <td>4–10%</td>
+                        <td>10–17%</td>
+                      </tr>
+                      <tr id="row-atleta-cult">
+                        <td class="bfRowLabel">Culturistas (élite)</td>
+                        <td>5–8%</td>
+                        <td>10–15%</td>
+                      </tr>
+                      <tr id="row-atleta-nada">
+                        <td class="bfRowLabel">Nadadores</td>
+                        <td>5–11%</td>
+                        <td>14–24%</td>
+                      </tr>
+                      <tr id="row-atleta-basket">
+                        <td class="bfRowLabel">Jugadores basket</td>
+                        <td>7–11%</td>
+                        <td>18–27%</td>
+                      </tr>
+                      <tr id="row-atleta-remo">
+                        <td class="bfRowLabel">Remo</td>
+                        <td>11–15%</td>
+                        <td>18–24%</td>
+                      </tr>
+                      <tr id="row-atleta-tenis">
+                        <td class="bfRowLabel">Tenistas</td>
+                        <td>14–17%</td>
+                        <td>19–22%</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <div class="bfNote" id="bfClassNote">La flecha se posiciona cuando calculas un resultado.</div>
+              </div>
+            </div>
+          </section>
+
+          <section class="msSection" id="msSection">
+            <div class="msHeader">Evaluador de salud metabólica</div>
+
+            <div class="msCard">
+              <table class="msTable" aria-label="Criterios Síndrome Metabólico">
+                <tbody>
+                  <tr>
+                    <td class="msLeftGreen">Cintura elevada (Hombres ≥102 cm / Mujeres ≥88 cm)</td>
+                    <td class="msRightYellow">
+                      <button class="msYN" type="button" data-key="waist" data-val="no">NO</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="msLeftGreen">Triglicéridos ≥150 mg/dL</td>
+                    <td class="msRightYellow">
+                      <button class="msYN" type="button" data-key="tg" data-val="no">NO</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="msLeftGreen">HDL bajo (H &lt;40 / M &lt;50 mg/dL)</td>
+                    <td class="msRightYellow">
+                      <button class="msYN" type="button" data-key="hdl" data-val="no">NO</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="msLeftGreen">Presión arterial ≥130/85 mmHg</td>
+                    <td class="msRightYellow">
+                      <button class="msYN" type="button" data-key="bp" data-val="no">NO</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="msLeftGreen">Glucosa en ayunas ≥100 mg/dL</td>
+                    <td class="msRightYellow">
+                      <button class="msYN" type="button" data-key="glu" data-val="no">NO</button>
+                    </td>
+                  </tr>
+
+                  <tr class="msInterpretRow">
+                    <td colspan="2" class="msInterpretText" id="msInterpret">Interpretación de criterios</td>
+                  </tr>
+
+                  <tr>
+                    <td class="msLeftGreen" id="msBottomText" colspan="2" style="text-align:center;">
+                      No cumple los criterios para síndrome metabólico, evaluar más.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section class="iccSection" id="iccSection">
+            <div class="iccLayout">
+              <div class="iccCard">
+                <div class="iccTitle">Índice cintura-cadera (ICC)</div>
+
+                <div class="iccValueWrap">
+                  <span class="iccValue" id="iccValue">#DIV/0!</span>
+                </div>
+
+                <div class="iccRowPink">
+                  ICC PARA MUJERES (&gt; 0.85) &nbsp;&nbsp; Revisar nota adjunta
+                </div>
+                <div class="iccRowBlue">
+                  ICC PARA HOMBRES (&gt; 0.95) &nbsp;&nbsp; Revisar nota adjunta
+                </div>
+              </div>
+
+              <div class="iccImageCard">
+                <img src="obesidad_tipos.png" alt="Tipos de obesidad: androide vs ginecoide" />
+              </div>
+            </div>
+          </section>
+
+          <section class="notesSection" id="notesSection">
+            <div class="notesCard">
+              <div class="accItem">
+                <details class="acc" open>
+                  <summary class="accSum">
+                    <span class="accLeft">
+                      <span class="accPill" aria-hidden="true"></span>
+                      <span class="accTitle">Notas Adjuntas</span>
+                    </span>
+                    <span class="accChevron" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" width="18" height="18" fill="none">
+                        <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                    </span>
+                  </summary>
+
+                  <div class="accBody">
+                    <p class="notesMeta">Raúl Vargas</p>
+
+                    <p class="notesText">
+                      El <strong>Índice de Cintura-Cadera (ICC)</strong> es diferente para mujeres y hombres:
+                    </p>
+
+                    <ul class="notesList">
+                      <li><strong>En mujeres</strong>, el punto de corte promedio es <strong>&gt; 0.85</strong>. A mayor cifra, mayor probabilidad de riesgo cardiometabólico (según el contexto clínico).</li>
+                      <li><strong>En hombres</strong>, el punto de corte promedio es <strong>&gt; 0.95</strong>.</li>
+                    </ul>
+
+                    <hr class="notesDivider" />
+
+                    <p class="notesText">Según la distribución de grasa, se puede clasificar en:</p>
+
+                    <p class="notesSubHead">Obesidad androide (más común en hombres), forma “manzana”</p>
+                    <p class="notesText">Puede asociarse a:</p>
+                    <ul class="notesList">
+                      <li>Resistencia a la insulina</li>
+                      <li>Intolerancia a la glucosa</li>
+                      <li>Diabetes mellitus tipo 2</li>
+                    </ul>
+                    <p class="notesText">Zonas frecuentes: abdomen, espalda baja, cintura.</p>
+
+                    <p class="notesSubHead">Obesidad ginecoide (más común en mujeres), forma “pera”</p>
+                    <p class="notesText">Puede asociarse a:</p>
+                    <ul class="notesList">
+                      <li>Enfermedades de la vesícula</li>
+                      <li>Várices</li>
+                      <li>Constipación</li>
+                    </ul>
+                    <p class="notesText">Zonas frecuentes: cadera, muslos, piernas.</p>
+
+                    <hr class="notesDivider" />
+
+                    <p class="notesSubHead">RECOMENDACIÓN</p>
+                    <p class="notesText">En cuanto a estudios de laboratorio, se aconseja solicitar:</p>
+                    <ul class="notesList">
+                      <li>Glucosa en ayunas</li>
+                      <li>Insulina en ayunas</li>
+                      <li><strong>HbA1c (hemoglobina glicosilada)</strong></li>
+                      <li>Perfil lipídico completo</li>
+                      <li>Índice aterogénico</li>
+                      <li>PCR ultrasensible</li>
+                    </ul>
+
+                    <p class="notesText">
+                      Correlacionar con composición corporal, circunferencias y clínica. Un objetivo razonable: pérdida de grasa de 5–10% a mediano plazo.
+                    </p>
+                  </div>
+                </details>
+              </div>
+
+              <div class="accItem">
+                <details class="acc">
+                  <summary class="accSum">
+                    <span class="accLeft">
+                      <span class="accPill" aria-hidden="true"></span>
+                      <span class="accTitle">Vista rápida</span>
+                    </span>
+                    <span class="accChevron" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" width="18" height="18" fill="none">
+                        <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                    </span>
+                  </summary>
+
+                  <div class="accBody">
+                    <p class="notesText">
+                      Si ICC rebasa el punto de corte (H &gt; 0.95 / M &gt; 0.85), considerar riesgo cardiometabólico y correlacionar con:
+                      glucosa/insulina (HOMA-IR), HbA1c, perfil lipídico, PCR-us y clínica (PA, circunferencias, composición corporal).
+                    </p>
+                  </div>
+                </details>
+              </div>
+            </div>
+          </section>
+
+          <section class="pautasSection" id="pautasSection">
+            <div class="pautasCard">
+              <div class="pautasHeader">PAUTAS ADICIONALES</div>
+              <div class="pautasBody">
+                <p class="pautasText">
+                  Evaluar solo el perfil lipídico nos indica en esos días cuáles son las cifras de cada biomarcador, pero al solicitar el
+                  índice aterogénico, prueba de PCR, HbA1c (hemoglobina glicosilada), más el porcentaje de grasa, la distribución de grasa,
+                  las tallas y fotografías del paciente, podremos tener información mucho más completa y útil. Por tanto:
+                </p>
+
+                <ul class="pautasList">
+                  <li>Podemos tener ventaja en cuanto a tiempo para comenzar el abordaje nutricional.</li>
+                  <li>Meta razonable de pérdida de grasa a medio–largo plazo: <strong>5–10%</strong>.</li>
+                  <li>Se recomienda fuertemente el <strong>entrenamiento de fuerza (pesas)</strong>.</li>
+                  <li>Aporte de proteína de <strong>2 g/kg</strong> de peso total hasta <strong>3 g/kg</strong> de peso total, para prevenir lo más posible la pérdida de masa magra.</li>
+                  <li>El aporte de proteína más el aporte de fibra puede aumentar la saciedad, disminuyendo la probabilidad de consumir más calorías.</li>
+                </ul>
+              </div>
+            </div>
+          </section>
+
+          <!-- =========================
+               NUEVO: FENOTIPO + ABORDAJE IDEAL (RECUADROS DISTINTOS)
+               ========================= -->
+          <section class="abSection" id="abSection">
+            <div class="abTopGrid">
+              <div class="abCard" id="abFenotipoCard">
+                <div class="abHeader">
+                  <span>FENOTIPO DETECTADO</span>
+                  <span class="tag"><span class="tagDot"></span><span id="abFenotipoTag">—</span></span>
+                </div>
+                <div class="abBody">
+                  <p class="abText" id="abFenotipoText">
+                    Selecciona criterios para mostrar el fenotipo sugerido.
+                  </p>
+                </div>
+              </div>
+
+              <div class="abCard" id="abIdealCard">
+                <div class="abHeader">
+                  <span>ABORDAJE IDEAL SUGERIDO</span>
+                  <span class="tag"><span class="tagDot"></span><span id="abIdealTag">Guía</span></span>
+                </div>
+                <div class="abBody">
+                  <p class="abText" id="abIdealText">
+                    Aquí aparecerá el enfoque recomendado según el fenotipo (educativo; se individualiza con clínica y labs).
+                  </p>
+                  <ul class="abList" id="abIdealList"></ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="abNote">
+              Nota: esto es una guía clínica-nutricional educativa. Siempre confirmar diagnóstico, descartar causas secundarias (tiroides, hiperprolactinemia, CAH no clásica, Cushing, tumores secretores) y personalizar según objetivo (fertilidad, piel/vello, peso, riesgo cardiometabólico).
+            </div>
+
+            <div class="abGrid4" id="abByFenotipoGrid">
+              <div class="abCard" data-ab="A" id="abCardA">
+                <div class="abMiniHeader">Fenotipo A • Abordaje ideal</div>
+                <div class="abBody">
+                  <p class="abText">Prioridad: <strong>metabólico + hiperandrogenismo + ciclo</strong>. Suele requerir un plan más intensivo.</p>
+                  <ul class="abList" id="abListA"></ul>
+                </div>
+              </div>
+
+              <div class="abCard" data-ab="B" id="abCardB">
+                <div class="abMiniHeader">Fenotipo B • Abordaje ideal</div>
+                <div class="abBody">
+                  <p class="abText">Prioridad: <strong>ciclo + hiperandrogenismo</strong>, y búsqueda activa de IR/metabólico.</p>
+                  <ul class="abList" id="abListB"></ul>
+                </div>
+              </div>
+
+              <div class="abCard" data-ab="C" id="abCardC">
+                <div class="abMiniHeader">Fenotipo C • Abordaje ideal</div>
+                <div class="abBody">
+                  <p class="abText">Prioridad: <strong>hiperandrogenismo</strong> (piel/vello) con vigilancia metabólica.</p>
+                  <ul class="abList" id="abListC"></ul>
+                </div>
+              </div>
+
+              <div class="abCard" data-ab="D" id="abCardD">
+                <div class="abMiniHeader">Fenotipo D • Abordaje ideal</div>
+                <div class="abBody">
+                  <p class="abText">Prioridad: <strong>regularidad menstrual/ovulación</strong> + estilo de vida; menor carga androgénica.</p>
+                  <ul class="abList" id="abListD"></ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="abCard" id="abSubtiposCard">
+              <div class="abHeader">
+                <span>CÓMO DIFERENCIAR SUBTIPO: IR vs ADRENAL vs OVÁRICO</span>
+                <span class="tag"><span class="tagDot"></span><span>Clínica + 4 labs</span></span>
+              </div>
+              <div class="abBody">
+                <p class="abText">
+                  Esto no reemplaza diagnóstico médico: ayuda a orientar “qué buscar primero” y qué laboratorios priorizar según presentación clínica.
+                </p>
+
+                <div class="abGrid4" style="margin-top:14px;">
+                  <div class="abCard" style="box-shadow:none; border-color: rgba(255, 140, 0, 0.28); background: rgba(255,255,255,0.72);">
+                    <div class="abMiniHeader">SOP insulinorresistente (IR)</div>
+                    <div class="abBody">
+                      <p class="abText"><strong>Clínica sugerente</strong>:</p>
+                      <ul class="abList">
+                        <li>Aumento de cintura/obesidad central, acantosis nigricans.</li>
+                        <li>Hambre frecuente, somnolencia postprandial, antojos dulces.</li>
+                        <li>Historia familiar de DM2/SM, dislipidemia.</li>
+                      </ul>
+                      <p class="abText" style="margin-top:10px;"><strong>4 laboratorios clave</strong>:</p>
+                      <ul class="abList">
+                        <li>Insulina en ayunas (y/o HOMA-IR calculado).</li>
+                        <li>Glucosa en ayunas.</li>
+                        <li>HbA1c.</li>
+                        <li>Curva de tolerancia (75g) con glucosa ± insulina (si se puede).</li>
+                      </ul>
+                    </div>
+                  </div>
+
+                  <div class="abCard" style="box-shadow:none; border-color: rgba(255, 140, 0, 0.28); background: rgba(255,255,255,0.72);">
+                    <div class="abMiniHeader">SOP “adrenal” (predominio suprarrenal)</div>
+                    <div class="abBody">
+                      <p class="abText"><strong>Clínica sugerente</strong>:</p>
+                      <ul class="abList">
+                        <li>Inicio ligado a estrés/privación de sueño; ansiedad, fatiga.</li>
+                        <li>Acné/hirsutismo con peso normal o cambios leves.</li>
+                        <li>Empeora con cafeína/estrés; síntomas de disautonomía en algunas pacientes.</li>
+                      </ul>
+                      <p class="abText" style="margin-top:10px;"><strong>4 laboratorios clave</strong>:</p>
+                      <ul class="abList">
+                        <li>DHEA-S (marcador adrenal útil).</li>
+                        <li>Androstenediona.</li>
+                        <li>Cortisol (idealmente según sospecha: AM o prueba dirigida por médico).</li>
+                        <li>17-OH progesterona (descartar CAH no clásica si hiperandrogenismo).</li>
+                      </ul>
+                    </div>
+                  </div>
+
+                  <div class="abCard" style="box-shadow:none; border-color: rgba(255, 140, 0, 0.28); background: rgba(255,255,255,0.72);">
+                    <div class="abMiniHeader">SOP “ovárico” (predominio ovárico)</div>
+                    <div class="abBody">
+                      <p class="abText"><strong>Clínica sugerente</strong>:</p>
+                      <ul class="abList">
+                        <li>Hiperandrogenismo claro: hirsutismo, acné, alopecia.</li>
+                        <li>Oligo/amenorrea desde adolescencia; infertilidad anovulatoria.</li>
+                        <li>USG con MOP (no obligatorio, pero apoya).</li>
+                      </ul>
+                      <p class="abText" style="margin-top:10px;"><strong>4 laboratorios clave</strong>:</p>
+                      <ul class="abList">
+                        <li>Testosterona total y/o libre (ideal con SHBG para índice androgénico).</li>
+                        <li>SHBG (suele bajar con IR, sube con estrógenos/tiroides).</li>
+                        <li>LH y FSH (relación LH/FSH puede orientar en algunos casos).</li>
+                        <li>AMH (orienta a carga folicular; interpretación por contexto).</li>
+                      </ul>
+                    </div>
+                  </div>
+
+                  <div class="abCard" style="box-shadow:none; border-color: rgba(255, 140, 0, 0.28); background: rgba(255,255,255,0.72);">
+                    <div class="abMiniHeader">Siempre descartar “mimics”</div>
+                    <div class="abBody">
+                      <p class="abText"><strong>Si hay datos atípicos</strong> (virilización rápida, andrógenos muy altos, galactorrea, pérdida de peso inexplicable, estrías violáceas, etc.):</p>
+                      <ul class="abList">
+                        <li>TSH + T4L (tiroides)</li>
+                        <li>Prolactina</li>
+                        <li>17-OH progesterona</li>
+                        <li>Evaluación de Cushing/tumor según sospecha clínica (médico)</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+                <p class="abText" style="margin-top:14px;">
+                  Tip: la mayoría de pacientes son “mixtas”. El objetivo de este bloque es priorizar la ruta: <strong>metabólico (IR)</strong> vs <strong>androgénico (ovárico)</strong> vs <strong>estrés/adrenal</strong>.
+                </p>
+              </div>
+            </div>
+          </section>
+
+        </div><!-- /criteriaWrap -->
+      </div><!-- /heroInner -->
+    </main>
+  </div><!-- /wrap -->
+
+  <!-- Botones flotantes -->
+  <div class="floatBtns" aria-label="Botones de contacto flotantes">
+    <button class="floatBtn ig" id="btnIG" type="button" aria-label="Instagram">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M7.5 2.8h9A4.7 4.7 0 0 1 21.2 7.5v9A4.7 4.7 0 0 1 16.5 21.2h-9A4.7 4.7 0 0 1 2.8 16.5v-9A4.7 4.7 0 0 1 7.5 2.8Z" stroke="currentColor" stroke-width="2"/>
+        <path d="M12 16.1a4.1 4.1 0 1 0 0-8.2 4.1 4.1 0 0 0 0 8.2Z" stroke="currentColor" stroke-width="2"/>
+        <path d="M17.3 6.7h.01" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+      </svg>
+    </button>
+
+    <button class="floatBtn wa" id="btnWAFloat" type="button" aria-label="WhatsApp">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M12 21.2a9.1 9.1 0 0 0 7.8-13.8A9.1 9.1 0 0 0 3.9 18.6L2.8 21.2l2.8-1A9.1 9.1 0 0 0 12 21.2Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+        <path d="M9.3 8.7c.2-.4.4-.4.6-.4h.5c.2 0 .4 0 .5.4.1.4.5 1.4.6 1.6.1.2.1.4 0 .6l-.3.5c-.1.2-.2.4 0 .7.2.3.8 1.2 1.8 2 .9.7 1.7 1 2 .9.3-.1.9-.4 1-.6.2-.2.3-.2.5-.1.2.1 1.4.7 1.6.8.2.1.3.2.3.4 0 .2-.1.8-.6 1.2-.5.4-1 .6-1.7.5-1.3-.2-2.9-1-4.3-2.4-1.4-1.4-2.3-3-2.4-4.3 0-.7.1-1.2.5-1.7Z" fill="currentColor"/>
+      </svg>
+    </button>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      /* =========================
+         CONTACTO (WhatsApp + Instagram)
+         ========================= */
+      const whatsappNumber = "5218132216529";
+      const whatsappText = "Hola, quiero ponerme en contacto con PRO Enhanced Nutrition.";
+      const wa = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappText)}`;
+      const instagramUrl = "https://www.instagram.com/raulvargas_proehn";
+
+      const goWA = () => window.open(wa, "_blank", "noopener,noreferrer");
+      const goIG = () => window.open(instagramUrl, "_blank", "noopener,noreferrer");
+
+      document.getElementById("btnCtaTop").addEventListener("click", goWA);
+      document.getElementById("btnWAFloat").addEventListener("click", goWA);
+      document.getElementById("btnIG").addEventListener("click", goIG);
+
+      /* =========================
+         DATA: ABORDAJES POR FENOTIPO (NUEVO)
+         ========================= */
+      const approachMap = {
+        A: [
+          "Priorizar reducción de riesgo cardiometabólico: déficit moderado, proteína alta, fibra alta, fuerza 3–5 días/semana + NEAT.",
+          "Screening metabólico completo: glucosa/insulina (HOMA-IR), HbA1c, lípidos, PA, cintura/ICC; seguimiento por objetivos.",
+          "Enfoque antiinflamatorio práctico: ultraprocesados ↓, omega-3/alimentos ricos, sueño y estrés como parte del plan.",
+          "Si objetivo es fertilidad: optimizar ovulación con equipo médico; ordenar timing de labs y ultrasonido según fase.",
+          "Si objetivo es piel/vello: plan sostenido 12+ semanas, y descartar mimics si hiperandrogenismo es desproporcionado."
+        ],
+        B: [
+          "Misma intensidad que A en ciclo + hiperandrogenismo; buscar IR aunque el USG no muestre MOP.",
+          "Nutrición: control de carga glucémica + proteína/fibra; priorizar fuerza y progresión (mejoran sensibilidad a insulina).",
+          "Monitoreo: lípidos, HbA1c, insulina/HOMA-IR; metas realistas (5–10% grasa si aplica).",
+          "Piel/vello: integrar estrategia dermatológica/médica si hay impacto significativo.",
+          "Educar sobre consistencia: cambios en andrógenos y piel requieren tiempo."
+        ],
+        C: [
+          "Fenotipo ovulatorio: foco en hiperandrogenismo + prevención metabólica (no asumir “todo bien”).",
+          "Plan: fuerza + pasos diarios; distribución de carbohidratos alrededor de entrenamiento si aplica.",
+          "Monitoreo dirigido: lípidos, glucosa/HbA1c; considerar insulina/HOMA-IR si hay signos clínicos de IR.",
+          "Piel/acné/hirsutismo: evaluar severidad, causas asociadas (adrenal vs ovárico) y tratar por rutas.",
+          "Si IMC normal: evitar dietas extremas; priorizar recomposición y salud hormonal."
+        ],
+        D: [
+          "Menor carga androgénica: priorizar regularidad menstrual/ovulación y salud metabólica general.",
+          "Plan base: fuerza + cardio zona 2 (si gusta) + sueño; déficit suave si hay exceso de grasa.",
+          "Monitoreo: TSH/T4L y prolactina si amenorrea persistente; glucosa/HbA1c según riesgo.",
+          "Si búsqueda de embarazo: coordinar con médico para evaluar ovulación y causas alternas de anovulación.",
+          "Evitar sobre-medicalización: responder a la clínica y a datos objetivos."
+        ]
+      };
+
+      const phenotypeNames = {
+        A: "Fenotipo A",
+        B: "Fenotipo B",
+        C: "Fenotipo C",
+        D: "Fenotipo D"
+      };
+
+      function renderApproachLists(){
+        (["A","B","C","D"]).forEach(k => {
+          const ul = document.getElementById(`abList${k}`);
+          if (!ul) return;
+          ul.innerHTML = approachMap[k].map(x => `<li>${x}</li>`).join("");
+        });
+      }
+      renderApproachLists();
+
+      function setActiveApproachCard(letter){
+        ["A","B","C","D"].forEach(k => {
+          const card = document.getElementById(`abCard${k}`);
+          if (card) card.classList.toggle("isActive", k === letter);
+        });
+      }
+
+      function fillTopApproach(letter, fenotipoLabelFull){
+        const tag = document.getElementById("abFenotipoTag");
+        const txt = document.getElementById("abFenotipoText");
+        const idealTxt = document.getElementById("abIdealText");
+        const idealUl = document.getElementById("abIdealList");
+
+        if (!letter){
+          tag.textContent = "—";
+          txt.textContent = "Selecciona criterios para mostrar el fenotipo sugerido.";
+          idealTxt.textContent = "Aquí aparecerá el enfoque recomendado según el fenotipo (educativo; se individualiza con clínica y labs).";
+          idealUl.innerHTML = "";
+          setActiveApproachCard(null);
+          return;
+        }
+
+        tag.textContent = `${phenotypeNames[letter]} (${letter})`;
+        txt.textContent = fenotipoLabelFull;
+
+        idealTxt.textContent = `Resumen del abordaje ideal para ${phenotypeNames[letter]}:`;
+        idealUl.innerHTML = approachMap[letter].map(x => `<li>${x}</li>`).join("");
+
+        setActiveApproachCard(letter);
+      }
+
+      /* =========================
+         SOP: botones SI/NO + resultado + reset
+         ========================= */
+      const btns = document.querySelectorAll(".toggleBtn");
+      const resMain = document.getElementById("resMain");
+      const resMeta = document.getElementById("resMeta");
+      const resFenotipo = document.getElementById("resFenotipo");
+      const box = document.getElementById("fenotipoResultado");
+      const btnReset = document.getElementById("btnReset");
+
+      const btnExportWord = document.getElementById("btnExportWord");
+
+      const state = { mens: false, mop: false, ha: false };
+
+      function paintBtn(btn, isOn){
+        btn.dataset.val = isOn ? "si" : "no";
+        btn.textContent = isOn ? "SI" : "NO";
+      }
+
+      function calcFenotipo(){
+        const m = state.mens;
+        const o = state.mop;
+        const h = state.ha;
+
+        if (m && o && h) return "Fenotipo A (3 criterios: Mens + HA + MOP)";
+        if (m && h && !o) return "Fenotipo B (Mens + HA)";
+        if (h && o && !m) return "Fenotipo C (HA + MOP)";
+        if (m && o && !h) return "Fenotipo D (Mens + MOP)";
+        return "—";
+      }
+
+      function getFenotipoLetterFromText(fTxt){
+        const match = String(fTxt || "").match(/Fenotipo ([A-D])/);
+        return match ? match[1] : null;
+      }
+
+      function setResultClass(cls){
+        box.classList.remove("resA","resB","resC","resD","resNeutral");
+        box.classList.add(cls);
+      }
+
+      function activateCard(letter){
+        document.querySelectorAll(".fenotipoCard").forEach(c => c.classList.remove("cardActiva"));
+        if (!letter) return;
+        const card = document.querySelector(`.fenotipoCard[data-feno="${letter}"]`);
+        if (card){
+          card.classList.add("cardActiva");
+          setTimeout(() => card.scrollIntoView({ behavior: "smooth", block: "center" }), 200);
+        }
+      }
+
+      function setResultPulse(on){
+        box.classList.toggle("isResult", !!on);
+      }
+
+      function updateUI(){
+        const positives = Object.values(state).filter(Boolean).length;
+        resMeta.textContent = `Criterios positivos: ${positives}/3`;
+
+        if (positives < 2){
+          resMain.textContent = "Selecciona al menos 2 criterios para SOP (Rotterdam 2003).";
+          resFenotipo.textContent = "—";
+          setResultClass("resNeutral");
+          setResultPulse(false);
+          activateCard(null);
+
+          // NUEVO: top recuadros
+          fillTopApproach(null, "");
+          return;
+        }
+
+        const f = calcFenotipo();
+        resMain.textContent = "Fenotipo sugerido según criterios positivos:";
+        resFenotipo.textContent = f;
+
+        if (f.includes("Fenotipo A")) setResultClass("resA");
+        else if (f.includes("Fenotipo B")) setResultClass("resB");
+        else if (f.includes("Fenotipo C")) setResultClass("resC");
+        else if (f.includes("Fenotipo D")) setResultClass("resD");
+        else setResultClass("resNeutral");
+
+        const letter = getFenotipoLetterFromText(f);
+        activateCard(letter);
+        setResultPulse(!!letter);
+
+        // NUEVO: top recuadros + highlight abordaje
+        fillTopApproach(letter, f);
+      }
+
+      btns.forEach(btn => {
+        const key = btn.dataset.key;
+        state[key] = (btn.dataset.val === "si");
+        paintBtn(btn, state[key]);
+
+        btn.addEventListener("click", () => {
+          state[key] = !state[key];
+          paintBtn(btn, state[key]);
+          updateUI();
+        });
+      });
+
+      btnReset.addEventListener("click", () => {
+        Object.keys(state).forEach(k => state[k] = false);
+        btns.forEach(btn => paintBtn(btn, false));
+        updateUI();
+        setTimeout(() => box.scrollIntoView({ behavior: "smooth", block: "center" }), 150);
+      });
+
+      updateUI();
+
+      /* =========================
+         Recuadro amarillo (HA bio/clin)
+         ========================= */
+      const haBioBtn = document.getElementById("haBioBtn");
+      const haClinBtn = document.getElementById("haClinBtn");
+
+      function toggleYellow(btn){
+        const isOn = btn.dataset.val === "si";
+        btn.dataset.val = isOn ? "no" : "si";
+        btn.textContent = (btn.dataset.val === "si") ? "SI" : "NO";
+      }
+
+      haBioBtn.addEventListener("click", () => toggleYellow(haBioBtn));
+      haClinBtn.addEventListener("click", () => toggleYellow(haClinBtn));
+
+      /* =========================
+         US NAVY: % grasa + tabla + flecha
+         ========================= */
+      const bfSex = document.getElementById("bfSex");
+      const bfHeight = document.getElementById("bfHeight");
+      const bfWeight = document.getElementById("bfWeight");
+      const bfNeck = document.getElementById("bfNeck");
+      const bfWaist = document.getElementById("bfWaist");
+      const bfHipWrap = document.getElementById("bfHipWrap");
+      const bfHip = document.getElementById("bfHip");
+
+      const bfCalc = document.getElementById("bfCalc");
+      const bfClear = document.getElementById("bfClear");
+
+      const bfPctEl = document.getElementById("bfPct");
+      const bfDetailEl = document.getElementById("bfDetail");
+
+      const bfArrow = document.getElementById("bfArrow");
+      const bfArrowLabel = document.getElementById("bfArrowLabel");
+      const bfTableWrap = document.getElementById("bfTableWrap");
+
+      function cmToIn(cm){ return cm / 2.54; }
+
+      function parsePosNum(el){
+        const v = Number(el.value);
+        return Number.isFinite(v) && v > 0 ? v : null;
+      }
+
+      function showHipBySex(){
+        const isFemale = bfSex.value === "female";
+        bfHipWrap.style.display = "flex";
+        const label = bfHipWrap.querySelector(".bfLabel");
+        label.textContent = isFemale
+          ? "Cadera (cm) (para mujer en %grasa • necesaria para ICC)"
+          : "Cadera (cm) (opcional para %grasa • necesaria para ICC)";
+      }
+
+      function clearArrowAndHighlight(){
+        bfArrow.style.opacity = 0;
+        bfArrowLabel.style.opacity = 0;
+        document.querySelectorAll("#bfTable tbody tr").forEach(tr => tr.classList.remove("bfRowActive"));
+        document.querySelectorAll("#bfTable tbody td").forEach(td => td.classList.remove("bfCellActive"));
+      }
+
+      function highlightRowAndCell(rowId, sex){
+        const row = document.getElementById(rowId);
+        if (!row) return;
+
+        row.classList.add("bfRowActive");
+        const tds = row.querySelectorAll("td");
+        const idx = (sex === "male") ? 1 : 2;
+        if (tds[idx]) tds[idx].classList.add("bfCellActive");
+      }
+
+      function positionArrowToRow(rowId, labelText){
+        const row = document.getElementById(rowId);
+        if (!row) return;
+
+        const wrapRect = bfTableWrap.getBoundingClientRect();
+        const rowRect = row.getBoundingClientRect();
+        const top = (rowRect.top - wrapRect.top) + (rowRect.height / 2) - 9;
+
+        bfArrow.style.top = `${top}px`;
+        bfArrow.style.opacity = 1;
+
+        bfArrowLabel.textContent = labelText;
+        bfArrowLabel.style.top = `${top - 10}px`;
+        bfArrowLabel.style.opacity = 1;
+      }
+
+      function getGeneralClassRow(sex, pct){
+        if (sex === "male"){
+          if (pct < 8) return { row:"row-delgado", name:"Delgado" };
+          if (pct < 15) return { row:"row-optimo", name:"Óptimo" };
+          if (pct < 20) return { row:"row-sobrepeso", name:"Sobrepeso" };
+          if (pct < 25) return { row:"row-preobeso", name:"Pre-obeso" };
+          return { row:"row-obeso", name:"Obeso" };
+        } else {
+          if (pct < 15) return { row:"row-delgado", name:"Delgado" };
+          if (pct < 20) return { row:"row-optimo", name:"Óptimo" };
+          if (pct < 25) return { row:"row-sobrepeso", name:"Sobrepeso" };
+          if (pct < 32) return { row:"row-preobeso", name:"Pre-obeso" };
+          return { row:"row-obeso", name:"Obeso" };
+        }
+      }
+
+      function getAthleteRowIfMatches(sex, pct){
+        const male = [
+          { row:"row-atleta-corre", name:"Corredores", min:4, max:9 },
+          { row:"row-atleta-lucha", name:"Luchadores", min:4, max:10 },
+          { row:"row-atleta-gim", name:"Gimnastas", min:4, max:10 },
+          { row:"row-atleta-cult", name:"Culturistas (élite)", min:5, max:8 },
+          { row:"row-atleta-nada", name:"Nadadores", min:5, max:11 },
+          { row:"row-atleta-basket", name:"Basket", min:7, max:11 },
+          { row:"row-atleta-remo", name:"Remo", min:11, max:15 },
+          { row:"row-atleta-tenis", name:"Tenistas", min:14, max:17 },
+        ];
+
+        const female = [
+          { row:"row-atleta-corre", name:"Corredores", min:6, max:15 },
+          { row:"row-atleta-gim", name:"Gimnastas", min:10, max:17 },
+          { row:"row-atleta-cult", name:"Culturistas (élite)", min:10, max:15 },
+          { row:"row-atleta-nada", name:"Nadadores", min:14, max:24 },
+          { row:"row-atleta-basket", name:"Basket", min:18, max:27 },
+          { row:"row-atleta-remo", name:"Remo", min:18, max:24 },
+          { row:"row-atleta-tenis", name:"Tenistas", min:19, max:22 },
+        ];
+
+        const list = sex === "male" ? male : female;
+        return list.find(x => pct >= x.min && pct <= x.max) || null;
+      }
+
+      function calcUSNavyBodyFatPct(sex, heightCm, neckCm, waistCm, hipCmOrNull){
+        const H = cmToIn(heightCm);
+        const N = cmToIn(neckCm);
+        const W = cmToIn(waistCm);
+
+        if (sex === "male"){
+          const x = W - N;
+          if (!(x > 0) || !(H > 0)) return null;
+          return 86.010 * Math.log10(x) - 70.041 * Math.log10(H) + 36.76;
+        } else {
+          const Hip = cmToIn(hipCmOrNull);
+          const x = W + Hip - N;
+          if (!(x > 0) || !(H > 0)) return null;
+          return 163.205 * Math.log10(x) - 97.684 * Math.log10(H) - 78.387;
+        }
+      }
+
+      function setBFResult(pct, weightKg){
+        const pct1 = Math.round(pct * 10) / 10;
+        bfPctEl.textContent = `${pct1}% grasa corporal (aprox.)`;
+
+        if (weightKg && weightKg > 0){
+          const fatKg = (weightKg * (pct / 100));
+          const leanKg = (weightKg - fatKg);
+          bfDetailEl.textContent = `Estimación: grasa ${Math.round(fatKg * 10) / 10} kg • masa magra ${Math.round(leanKg * 10) / 10} kg.`;
+        } else {
+          bfDetailEl.textContent = `Porcentaje calculado. (Agrega peso si quieres kg de grasa / masa magra).`;
+        }
+      }
+
+      function setBFError(msg){
+        bfPctEl.textContent = "—";
+        bfDetailEl.textContent = msg;
+        clearArrowAndHighlight();
+      }
+
+      function computeICC(){
+        const waist = parsePosNum(bfWaist);
+        const hip = parsePosNum(bfHip);
+        const sex = bfSex.value;
+
+        const iccValueEl = document.getElementById("iccValue");
+
+        if (!waist || !hip){
+          iccValueEl.textContent = "#DIV/0!";
+          iccValueEl.classList.remove("isHigh");
+          return;
+        }
+
+        const icc = waist / hip;
+        iccValueEl.textContent = (Math.round(icc * 100) / 100).toFixed(2);
+
+        const isHigh = (sex === "female") ? (icc > 0.85) : (icc > 0.95);
+        iccValueEl.classList.toggle("isHigh", isHigh);
+      }
+
+      function clearBF(){
+        bfHeight.value = "";
+        bfWeight.value = "";
+        bfNeck.value = "";
+        bfWaist.value = "";
+        bfHip.value = "";
+        bfSex.value = "female";
+
+        showHipBySex();
+
+        bfPctEl.textContent = "—";
+        bfDetailEl.textContent = `Completa los campos y presiona Calcular.`;
+        clearArrowAndHighlight();
+        computeICC();
+      }
+
+      showHipBySex();
+      bfSex.addEventListener("change", () => { showHipBySex(); computeICC(); });
+
+      bfClear.addEventListener("click", clearBF);
+
+      bfCalc.addEventListener("click", () => {
+        const sex = bfSex.value;
+        const heightCm = parsePosNum(bfHeight);
+        const weightKg = parsePosNum(bfWeight);
+        const neckCm = parsePosNum(bfNeck);
+        const waistCm = parsePosNum(bfWaist);
+        const hipCm = parsePosNum(bfHip);
+
+        if (!heightCm || !neckCm || !waistCm){
+          setBFError("Faltan datos: altura, cuello y cintura/abdomen son obligatorios.");
+          return;
+        }
+        if (sex === "female" && !hipCm){
+          setBFError("Faltan datos: para mujer, cadera es obligatoria.");
+          return;
+        }
+
+        const pct = calcUSNavyBodyFatPct(sex, heightCm, neckCm, waistCm, hipCm);
+        if (pct === null || !Number.isFinite(pct)){
+          setBFError("No se pudo calcular. Revisa que cintura sea mayor que cuello (y en mujer, que cintura + cadera sea mayor que cuello).");
+          return;
+        }
+
+        const pctClamped = Math.max(0, Math.min(75, pct));
+        setBFResult(pctClamped, weightKg || null);
+
+        const athlete = getAthleteRowIfMatches(sex, pctClamped);
+        const gen = getGeneralClassRow(sex, pctClamped);
+
+        clearArrowAndHighlight();
+        highlightRowAndCell(gen.row, sex);
+        if (athlete) highlightRowAndCell(athlete.row, sex);
+
+        const pct1 = Math.round(pctClamped * 10) / 10;
+        const label = athlete ? `${pct1}% • ${gen.name} • Atleta: ${athlete.name}` : `${pct1}% • ${gen.name}`;
+        positionArrowToRow(athlete ? athlete.row : gen.row, label);
+
+        computeICC();
+      });
+
+      clearArrowAndHighlight();
+
+      /* =========================
+         Evaluador MetS: si 3/5 => posible SM
+         ========================= */
+      const msBtns = document.querySelectorAll(".msYN");
+      const msInterpret = document.getElementById("msInterpret");
+      const msBottomText = document.getElementById("msBottomText");
+
+      const msState = { waist:false, tg:false, hdl:false, bp:false, glu:false };
+
+      function paintMSBtn(btn, on){
+        btn.dataset.val = on ? "si" : "no";
+        btn.textContent = on ? "SI" : "NO";
+      }
+
+      function updateMS(){
+        const yes = Object.values(msState).filter(Boolean).length;
+        msInterpret.textContent = `Interpretación de criterios • Positivos: ${yes}/5`;
+        msBottomText.textContent = (yes >= 3)
+          ? "Posible síndrome metabólico, indagar más en la información del paciente."
+          : "No cumple los criterios para síndrome metabólico, evaluar más.";
+      }
+
+      msBtns.forEach(btn => {
+        const key = btn.dataset.key;
+        msState[key] = (btn.dataset.val === "si");
+        paintMSBtn(btn, msState[key]);
+
+        btn.addEventListener("click", () => {
+          msState[key] = !msState[key];
+          paintMSBtn(btn, msState[key]);
+          updateMS();
+        });
+      });
+
+      updateMS();
+
+      /* =========================
+         ICC live
+         ========================= */
+      bfWaist.addEventListener("input", computeICC);
+      bfHip.addEventListener("input", computeICC);
+      computeICC();
+
+      /* =========================
+         Acordeón: solo uno open a la vez
+         ========================= */
+      const accs = document.querySelectorAll("details.acc");
+      accs.forEach(d => {
+        d.addEventListener("toggle", () => {
+          if (!d.open) return;
+          accs.forEach(other => {
+            if (other !== d) other.open = false;
+          });
+        });
+      });
+
+      /* =========================
+         EXPORTAR RESULTADOS A WORD (DOC)
+         - NUEVO: incluye abordaje ideal separado por fenotipo,
+                 y también un anexo con abordajes A-D en recuadros.
+         ========================= */
+      function escapeHtml(str){
+        return String(str ?? "")
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/"/g, "&quot;")
+          .replace(/'/g, "&#039;");
+      }
+
+      function yn(val){ return val ? "SI" : "NO"; }
+
+      function listToHtml(items){
+        return `<ul>${items.map(x => `<li>${escapeHtml(x)}</li>`).join("")}</ul>`;
+      }
+
+      function exportToWord(){
+        // Timestamp (hora México)
+        const stamp = new Date().toLocaleString("es-MX", { timeZone: "America/Mexico_City" });
+
+        // Fenotipo / SOP
+        const positives = Object.values(state).filter(Boolean).length;
+        const fenotipoTxt = document.getElementById("resFenotipo").textContent.trim();
+        const fenotipoMain = document.getElementById("resMain").textContent.trim();
+        const fLetter = getFenotipoLetterFromText(fenotipoTxt);
+
+        // HA extra (bio/clin)
+        const haBio = (haBioBtn.dataset.val === "si");
+        const haClin = (haClinBtn.dataset.val === "si");
+
+        // % grasa
+        const sexLabel = (bfSex.value === "female") ? "Mujer" : "Hombre";
+        const bfPctTxt = document.getElementById("bfPct").textContent.trim();
+        const bfDetailTxt = document.getElementById("bfDetail").textContent.trim();
+        const bfClass = (bfArrowLabel && bfArrowLabel.textContent) ? bfArrowLabel.textContent.trim() : "—";
+
+        // ICC
+        const iccEl = document.getElementById("iccValue");
+        const iccVal = iccEl ? iccEl.textContent.trim() : "—";
+        const iccHigh = iccEl ? iccEl.classList.contains("isHigh") : false;
+
+        // MetS
+        const msYes = Object.values(msState).filter(Boolean).length;
+        const msInterpretTxt = msInterpret.textContent.trim();
+        const msBottomTxt = msBottomText.textContent.trim();
+
+        // Notas / Pautas (texto visible ya en el DOM)
+        const notasEl = document.querySelector("#notesSection details.acc .accBody");
+        const notasPlain = notasEl ? notasEl.innerText.trim() : "";
+
+        const pautasEl = document.querySelector("#pautasSection .pautasBody");
+        const pautasPlain = pautasEl ? pautasEl.innerText.trim() : "";
+
+        // NUEVO: abordaje ideal (fenotipo detectado) y abordajes por fenotipo
+        const chosenApproach = fLetter ? approachMap[fLetter] : [];
+        const chosenTitle = fLetter ? `${phenotypeNames[fLetter]} (${fLetter})` : "—";
+
+        const allApproachesHtml = ["A","B","C","D"].map(k => {
+          const title = `${phenotypeNames[k]} (${k})`;
+          const activeBadge = (k === fLetter) ? `<span style="margin-left:10px; padding:2px 8px; border-radius:999px; border:1px solid #fb923c; background:#fff7ed; font-size:11px; font-weight:700;">DETECTADO</span>` : "";
+          return `
+            <div class="box">
+              <h2 style="margin:0 0 6px;">Abordaje ideal — ${escapeHtml(title)} ${activeBadge}</h2>
+              ${listToHtml(approachMap[k])}
+            </div>
+          `;
+        }).join("");
+
+        const docHtml = `
+<!doctype html>
+<html lang="es-MX">
+<head>
+  <meta charset="utf-8">
+  <title>PRO Enhanced Nutrition — Resultados</title>
+  <style>
+    body{ font-family: Arial, sans-serif; color:#111827; }
+    h1{ font-size: 20px; margin: 0 0 6px; }
+    h2{ font-size: 14px; margin: 18px 0 8px; }
+    p, li{ font-size: 12px; line-height: 1.55; margin: 6px 0; }
+    .muted{ color:#4b5563; }
+    .box{ border:1px solid #e5e7eb; border-radius:10px; padding:12px; margin: 10px 0; }
+    table{ border-collapse: collapse; width: 100%; }
+    td, th{ border:1px solid #e5e7eb; padding:8px; font-size: 12px; vertical-align: top; }
+    th{ background:#f3f4f6; text-align:left; }
+    .tag{ display:inline-block; padding:2px 8px; border-radius:999px; border:1px solid #e5e7eb; font-size:11px; }
+    .high{ border-color:#ef4444; color:#991b1b; }
+    .hr{ height:1px; background:#e5e7eb; border:0; margin: 12px 0; }
+  </style>
+</head>
+<body>
+  <h1>PRO Enhanced Nutrition — Exportación de resultados</h1>
+  <p class="muted">Generado: ${escapeHtml(stamp)} (hora México)</p>
+
+  <div class="box">
+    <h2>1) Fenotipo SOP (Rotterdam 2003)</h2>
+    <p><strong>${escapeHtml(fenotipoMain)}</strong></p>
+    <p><strong>Resultado:</strong> ${escapeHtml(fenotipoTxt)}</p>
+    <p><strong>Criterios positivos:</strong> ${escapeHtml(String(positives))}/3</p>
+    <table>
+      <tr><th>Criterio</th><th>Estado</th></tr>
+      <tr><td>Alteraciones menstruales y/o amenorrea</td><td>${escapeHtml(yn(state.mens))}</td></tr>
+      <tr><td>Morfología de ovario poliquístico (MOP)</td><td>${escapeHtml(yn(state.mop))}</td></tr>
+      <tr><td>Hiperandrogenismo (clínico o bioquímico)</td><td>${escapeHtml(yn(state.ha))}</td></tr>
+    </table>
+    <p><strong>HA adicional:</strong> Bioquímico = ${escapeHtml(yn(haBio))} • Clínico = ${escapeHtml(yn(haClin))}</p>
+  </div>
+
+  <div class="box">
+    <h2>2) Abordaje ideal según fenotipo detectado</h2>
+    <p><strong>Fenotipo:</strong> ${escapeHtml(chosenTitle)}</p>
+    ${
+      fLetter
+        ? `<p class="muted">Guía educativa; individualizar con clínica, objetivos (fertilidad/dermatológico/metabólico) y laboratorios.</p>${listToHtml(chosenApproach)}`
+        : `<p>No hay fenotipo detectado (se requieren ≥2 criterios). Abajo se incluye el anexo con abordajes por fenotipo.</p>`
+    }
+  </div>
+
+  <div class="box">
+    <h2>3) Composición corporal (US Navy, aproximación)</h2>
+    <p><strong>Sexo:</strong> ${escapeHtml(sexLabel)}</p>
+    <table>
+      <tr><th>Dato</th><th>Valor</th></tr>
+      <tr><td>Altura (cm)</td><td>${escapeHtml(bfHeight.value || "—")}</td></tr>
+      <tr><td>Peso (kg)</td><td>${escapeHtml(bfWeight.value || "—")}</td></tr>
+      <tr><td>Cuello (cm)</td><td>${escapeHtml(bfNeck.value || "—")}</td></tr>
+      <tr><td>Cintura/Abdomen (cm)</td><td>${escapeHtml(bfWaist.value || "—")}</td></tr>
+      <tr><td>Cadera (cm)</td><td>${escapeHtml(bfHip.value || "—")}</td></tr>
+    </table>
+    <p><strong>% grasa:</strong> ${escapeHtml(bfPctTxt)}</p>
+    <p><strong>Detalle:</strong> ${escapeHtml(bfDetailTxt)}</p>
+    <p><strong>Clasificación señalada:</strong> ${escapeHtml(bfClass)}</p>
+  </div>
+
+  <div class="box">
+    <h2>4) Índice cintura-cadera (ICC)</h2>
+    <p><strong>ICC:</strong> <span class="tag ${iccHigh ? "high" : ""}">${escapeHtml(iccVal)}${iccHigh ? " (alto)" : ""}</span></p>
+    <p class="muted">Puntos de corte: Mujeres &gt; 0.85 • Hombres &gt; 0.95.</p>
+  </div>
+
+  <div class="box">
+    <h2>5) Evaluador de salud metabólica (Síndrome Metabólico)</h2>
+    <p><strong>Positivos:</strong> ${escapeHtml(String(msYes))}/5</p>
+    <p><strong>${escapeHtml(msInterpretTxt)}</strong></p>
+    <p>${escapeHtml(msBottomTxt)}</p>
+    <table>
+      <tr><th>Criterio</th><th>Estado</th></tr>
+      <tr><td>Cintura elevada</td><td>${escapeHtml(yn(msState.waist))}</td></tr>
+      <tr><td>Triglicéridos ≥150 mg/dL</td><td>${escapeHtml(yn(msState.tg))}</td></tr>
+      <tr><td>HDL bajo</td><td>${escapeHtml(yn(msState.hdl))}</td></tr>
+      <tr><td>Presión arterial ≥130/85 mmHg</td><td>${escapeHtml(yn(msState.bp))}</td></tr>
+      <tr><td>Glucosa en ayunas ≥100 mg/dL</td><td>${escapeHtml(yn(msState.glu))}</td></tr>
+    </table>
+  </div>
+
+  <div class="box">
+    <h2>6) Notas adjuntas</h2>
+    <p style="white-space:pre-line;">${escapeHtml(notasPlain)}</p>
+  </div>
+
+  <div class="box">
+    <h2>7) Pautas adicionales</h2>
+    <p style="white-space:pre-line;">${escapeHtml(pautasPlain)}</p>
+  </div>
+
+  <hr class="hr"/>
+
+  <h2>ANEXO • Abordajes ideales por fenotipo (separados)</h2>
+  ${allApproachesHtml}
+
+  <p class="muted">
+    Documento generado automáticamente con fines educativos e informativos. Interpretar con criterio profesional.
+  </p>
+</body>
+</html>`;
+
+        const blob = new Blob([docHtml], { type: "application/msword;charset=utf-8" });
+        const url = URL.createObjectURL(blob);
+
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = "PROEHN_resultados.doc";
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+
+        setTimeout(() => URL.revokeObjectURL(url), 1000);
+      }
+
+      if (btnExportWord){
+        btnExportWord.addEventListener("click", exportToWord);
+      }
+    });
+  </script>
+</body>
+</html>
